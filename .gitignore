@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+# dev
+/workbench
+/workbench/
+/workbench/*
+
 # next.js
 /.next/
 /out/
