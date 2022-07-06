@@ -29,5 +29,18 @@
     "jest-environment-jsdom": "^28.1.2",
     "ts-node": "^10.8.2",
     "typescript": "4.7.4"
-  }
+  },
+  "description": "If you've got sh!t to do then you've got gs.todo",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdan80/gs.todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdan80/gs.todo/issues"
+  },
+  "homepage": "https://github.com/kdan80/gs.todo#readme"
 }
