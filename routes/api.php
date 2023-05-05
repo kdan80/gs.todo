@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+    $todos = File::json('/home/kd/Projects/gs.todo/storage/data.json');
+
     return $request->user();
 });
