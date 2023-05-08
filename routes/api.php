@@ -19,6 +19,12 @@ Route::get('/todos', [TodoController::class, 'index']);
 
 Route::get('/todos/{id}', [TodoController::class, 'show'])->where('id', '[0-9]+');
 
+Route::post('/todos', [TodoController::class, 'create']);
+
+Route::patch('/todos/{id}', [TodoController::class, 'update'])->where('id', '[0-9]+');
+
+Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->where('id', '[0-9]+');
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //     return $request->user();

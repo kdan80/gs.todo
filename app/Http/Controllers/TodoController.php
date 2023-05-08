@@ -21,4 +21,22 @@ class TodoController extends Controller
             ]
         ]);
     }
+
+    public function create() {
+        return response("created todo");
+    }
+
+    public function update($id) {
+
+        return response()->json([
+            'message' => "Updated todo $id"
+        ]);
+    }
+
+    public function destroy($id) {
+
+        return response()->json([
+            'message' => "Deleted todo $id"
+        ]);
+    }
 }
