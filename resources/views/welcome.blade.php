@@ -17,7 +17,7 @@
         @vite('resources/js/app.js')
     </head>
     <body class="antialiased">
-        Hello world ee
+        Hello world ff
 
                    
     </body>

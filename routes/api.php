@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/todos', function () {
 
-    $todos = File::json('/home/kd/Projects/gs.todo/storage/data.json');
-
-    return $request->user();
+    return response()->json([
+        'todos' => [
+            'title' => 'todo one'
+        ]
+    ]);
 });
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+//     return $request->user();
+// });
+
