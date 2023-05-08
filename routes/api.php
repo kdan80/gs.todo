@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +15,9 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::get('/todos', function () {
+Route::get('/todos', [TodoController::class, 'index']);
 
-    return response()->json([
-        'todos' => [
-            'title' => 'todo one'
-        ]
-    ]);
-});
+Route::get('/todos/{id}', [TodoController::class, 'show'])->where('id', '[0-9]+');
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
