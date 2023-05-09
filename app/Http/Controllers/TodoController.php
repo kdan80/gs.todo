@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class TodoController extends Controller 
 {
@@ -22,8 +23,16 @@ class TodoController extends Controller
         ]);
     }
 
-    public function store() {
-        return response("created todo");
+    public function store(Request $request) {
+
+        $description = $request->get('description');
+        $completed = false;
+
+        return response()->json([
+            'id' => 1,
+            'description' => $description,
+            'completed' => $completed
+        ]);
     }
 
     public function update($id) {
