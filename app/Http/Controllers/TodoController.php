@@ -22,7 +22,7 @@ class TodoController extends Controller
         ]);
     }
 
-    public function create() {
+    public function store() {
         return response("created todo");
     }
 

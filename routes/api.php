@@ -17,9 +17,9 @@ use App\Http\Controllers\TodoController;
 
 Route::get('/todos', [TodoController::class, 'index']);
 
-Route::get('/todos/{id}', [TodoController::class, 'show'])->where('id', '[0-9]+');
+Route::post('/todos', [TodoController::class, 'store']);
 
-Route::post('/todos', [TodoController::class, 'create']);
+Route::get('/todos/{id}', [TodoController::class, 'show'])->where('id', '[0-9]+');
 
 Route::patch('/todos/{id}', [TodoController::class, 'update'])->where('id', '[0-9]+');
 
