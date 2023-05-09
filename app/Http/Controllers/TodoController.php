@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use App\Models\Todo;
 
 class TodoController extends Controller 
 {
@@ -27,6 +28,13 @@ class TodoController extends Controller
 
         $description = $request->get('description');
         $completed = false;
+
+        $todo = new Todo;
+
+        $todo->description = $description;
+        $todo->completed = $completed;
+
+        $todo->save();
 
         return response()->json([
             'id' => 1,
