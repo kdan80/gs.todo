@@ -34,12 +34,17 @@ class TodoController extends Controller
         $todo->description = $description;
         $todo->completed = $completed;
 
-        $todo->save();
+        $success = $todo->save();
+
+        if(!$success) {
+            return response()->json([
+                'message' => 'failed'
+            ]);
+        }
 
         return response()->json([
-            'id' => 1,
-            'description' => $description,
-            'completed' => $completed
+            'message' => 'success',
+            'todo' => $todo
         ]);
     }
 
