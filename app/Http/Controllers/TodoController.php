@@ -27,19 +27,27 @@ class TodoController extends Controller
     public function store(Request $request) {
 
         $description = $request->get('description');
-        $completed = false;
+
+        if(!$description) {
+            
+            print_r("TodoController.php: No description provided");
+            // TODO: error handling
+
+            return;
+        }
 
         $todo = new Todo;
-
         $todo->description = $description;
-        $todo->completed = $completed;
+        $todo->completed = false;
 
         $success = $todo->save();
 
         if(!$success) {
-            return response()->json([
-                'message' => 'failed'
-            ]);
+
+            print_r("TodoController.php: Failed to save todo");
+            // TODO: error handling
+
+            return;
         }
 
         return response()->json([
