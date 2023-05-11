@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\DB;
 use App\Models\Todo;
 
 class TodoController extends Controller 
@@ -44,7 +45,7 @@ class TodoController extends Controller
 
         if(!$success) {
 
-            print_r("TodoController.php: Failed to save todo");
+            print_r("TodoController.php: Failed to store todo");
             // TODO: error handling
 
             return;
@@ -56,10 +57,44 @@ class TodoController extends Controller
         ]);
     }
 
-    public function update($id) {
+    public function update($id, Request $request) {
+
+        $todo = Todo::find($id);
+
+        if(!$todo) {
+
+            print_r("TodoController.php: Todo not found");
+            // Todo: error handling
+
+            return;
+        }
+
+        // Update the description
+        $description = $request->get('description');
+        $todo->description = ($description) 
+            ? $description 
+            : $todo->description;
+
+        // Update completed/status
+        $completed = $request->boolean('completed');
+        print_r("completed: " . $completed);
+        $todo->completed = ($completed)
+            ? $completed
+            : $todo->completed;
+
+        $success = $todo->save();
+        
+        if(!$success) {
+
+            print_r("TodoController.php: Failed to update todo");
+            // TODO: error handling
+
+            return;
+        }
 
         return response()->json([
-            'message' => "Updated todo $id"
+            'message' => "success",
+            'todo' => $todo
         ]);
     }
 
