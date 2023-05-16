@@ -54,7 +54,7 @@ class TodoController extends Controller
         return response()->json([
             'message' => 'success',
             'todo' => $todo
-        ]);
+        ], 201);
     }
 
     public function update($id, Request $request) {
@@ -95,7 +95,7 @@ class TodoController extends Controller
         return response()->json([
             'message' => "success",
             'todo' => $todo
-        ]);
+        ], 200);
     }
 
     public function destroy($id) {
