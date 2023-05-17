@@ -9,11 +9,9 @@ class TodoController extends Controller
 {
     public function index() {
 
-        return response()->json([
-            'todos' => [
-                'title' => 'todo one'
-            ]
-        ]);
+        $todos = Todo::paginate(4);
+
+        return response()->json($todos);
     }
 
     public function show($id) {
