@@ -11,16 +11,14 @@ class TodoController extends Controller
 
         $todos = Todo::paginate(4);
 
-        return response()->json($todos);
+        return response()->json($todos, 200);
     }
 
     public function show($id) {
 
-        return response()->json([
-            'todos' => [
-                'title' => 'todo ' . $id
-            ]
-        ]);
+        $todo = Todo::find($id);
+
+        return response()->json($todo, 200);
     }
 
     public function store(Request $request) {
