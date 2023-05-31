@@ -11,6 +11,9 @@ class TodoController extends Controller
     public function index() {
 
         $todos = Todo::paginate(4);
+        if (!$todos) {
+            throw TodoException::todosNotFound();
+        }
 
         return response()->json($todos, 200);
     }
@@ -31,11 +34,7 @@ class TodoController extends Controller
         $description = $request->get('description');
 
         if(!$description) {
-            
-            print_r("TodoController.php: No description provided");
-            // TODO: error handling
-
-            return;
+            throw TodoException::noDescription();
         }
 
         $todo = new Todo;
@@ -45,11 +44,7 @@ class TodoController extends Controller
         $success = $todo->save();
 
         if(!$success) {
-
-            print_r("TodoController.php: Failed to store todo");
-            // TODO: error handling
-
-            return;
+            throw TodoException::failedToSave();
         }
 
         return response()->json([
@@ -63,11 +58,7 @@ class TodoController extends Controller
         $todo = Todo::find($id);
 
         if(!$todo) {
-
-            print_r("TodoController.php: Todo not found");
-            // Todo: error handling
-
-            return;
+            throw TodoException::todoNotFound();
         }
 
         // Update the description
@@ -86,11 +77,7 @@ class TodoController extends Controller
         $success = $todo->save();
         
         if(!$success) {
-
-            print_r("TodoController.php: Failed to update todo");
-            // TODO: error handling
-
-            return;
+            throw TodoException::failedToUpdate();
         }
 
         return response()->json([
@@ -104,15 +91,13 @@ class TodoController extends Controller
         $todo = Todo::find($id);
 
         if (!$todo) {
-            // TODO: error handling
-            return response()->json("todo not found", 404);
+            throw TodoException::todoNotFound();
         }
 
         $success = $todo->delete();
 
         if (!$success) {
-            // TODO: error handling
-            return response()->json("failed", 500);
+            throw TodoException::failedToDelete();
         }
 
         print_r("Deleted: " . $success . "\n");
