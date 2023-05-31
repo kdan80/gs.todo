@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Exceptions\TodoException;
 
 class Handler extends ExceptionHandler
 {
@@ -23,8 +24,11 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (TodoException $e) {
+
+            return response()->json([
+                'message' => $e->getMessage()
+            ], $e->getCode());
         });
     }
 }
