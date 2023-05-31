@@ -68,8 +68,7 @@ class TodoController extends Controller
             : $todo->description;
 
         // Update completed/status
-        $completed = $request->boolean('completed');
-        print_r("completed: " . $completed);
+        $completed = $request->get('completed');
         $todo->completed = ($completed)
             ? $completed
             : $todo->completed;
