@@ -2,13 +2,18 @@ root = true
 
 [*]
 charset = utf-8
+max_line_length = 80
 end_of_line = lf
-indent_size = 4
-indent_style = space
-insert_final_newline = true
 trim_trailing_whitespace = true
+insert_final_newline = true
+quote_type = single
+indent_style = space
+indent_size = 4
+#curly_bracket_next_line = false
+#spaces_around_operators = true
 
 [*.md]
+max_line_length = 0
 trim_trailing_whitespace = false
 
 [*.{yml,yaml}]
@@ -16,3 +21,6 @@ indent_size = 2
 
 [docker-compose.yml]
 indent_size = 4
+
+[*.json]
+quote_type = double
