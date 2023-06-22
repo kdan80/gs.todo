@@ -19,6 +19,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Todo::factory(10)->create();
+        //Todo::factory(10)->create();
+        
+        $count = 10;
+        for ($i = 0; $i < 10; $i++) {
+            Todo::create([
+                'description' => 'test todo ' . $i + 1,
+                'completed' => 0,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
     }
 }
