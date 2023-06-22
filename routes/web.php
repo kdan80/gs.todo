@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
+use App\Models\Todo;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,19 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', []);
+
+    return Inertia::render('Welcome', [ 
+        "name" => "Kieran",
+    ]);
+});
+
+Route::get('/Dashboard', function () {
+
+    $todos = Todo::all();
+
+    return Inertia::render('Dashboard', [ 
+        "name" => "Kieran",
+        "todos" => $todos
+    ]);
 });
 
