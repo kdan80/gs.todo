@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
@@ -26,11 +25,30 @@ Route::get('/', function () {
 
 Route::get('/Dashboard', function () {
 
-    $todos = Todo::all();
+    //$todos = Todo::all();
 
     return Inertia::render('Dashboard', [ 
         "name" => "Kieran",
-        "todos" => $todos
+        "todos" => Todo::paginate(20)
     ]);
+});
+
+Route::post('/todo', function () {
+
+    $todo = Request::validate([
+        'description' => 'required',
+        'completed' => 'required'
+    ]);
+
+    // Todo::create([
+    //     'description' => $todo->description,
+    //     'completed' => 0,
+    //     'created_at' => now(),
+    //     'updated_at' => now()
+    // ]);
+    Todo::create($todo);
+
+    return redirect('/Dashboard');
+
 });
 

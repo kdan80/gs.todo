@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         //Todo::factory(10)->create();
         
-        $count = 10;
-        for ($i = 0; $i < 10; $i++) {
+        $count = 100;
+        for ($i = 0; $i < $count; $i++) {
             Todo::create([
                 'description' => 'test todo ' . $i + 1,
                 'completed' => 0,
