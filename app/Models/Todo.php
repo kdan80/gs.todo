@@ -10,5 +10,9 @@ class Todo extends Model
     use HasFactory;
 
     public $timestamps = true;
-    protected $fillable = ['description', 'completed'];
+    protected $fillable = ['description', 'completed', 'todolist_id'];
+
+    public function todolist() {
+        return $this->belongsTo(TodoList::class);
+    }
 }
