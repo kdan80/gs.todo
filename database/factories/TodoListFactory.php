@@ -3,15 +3,15 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Model\TodoList;
+use App\Model\Todo;
 
-class TodoFactory extends Factory
+class TodoListFactory extends Factory
 {
-    
     public function definition(): array
     {
         return [
-            'description' => fake()->sentence(),
-            'completed' => 0,
+            'name' => fake()->title(),
             'created_at' => now(),
             'updated_at' => now()
         ];

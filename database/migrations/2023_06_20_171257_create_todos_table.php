@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->integer('todo_list_id')->unsigned();
             $table->timestamps();
             $table->string('description');
             $table->boolean('completed');
+            $table->foreign('todo_list_id')->references('id')->on('todo_lists')->onDelete('cascade');
         });
     }
 
