@@ -11,7 +11,7 @@ class TodoListFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->title(),
+            'name' => "test todo list",
             'created_at' => now(),
             'updated_at' => now()
         ];

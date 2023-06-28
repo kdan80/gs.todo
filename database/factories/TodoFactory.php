@@ -10,7 +10,7 @@ class TodoFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => fake()->sentence(),
+            'description' => "test todo ",
             'completed' => 0,
             'created_at' => now(),
             'updated_at' => now()
