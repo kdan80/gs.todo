@@ -10,8 +10,11 @@ class TodoListFactory extends Factory
 {
     public function definition(): array
     {
+        static $count = 0;
+        $count++;
+
         return [
-            'name' => "test todo list",
+            'name' => "test todo list " . $count,
             'created_at' => now(),
             'updated_at' => now()
         ];
