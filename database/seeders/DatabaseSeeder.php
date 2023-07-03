@@ -16,14 +16,6 @@ class DatabaseSeeder extends Seeder
         $lists = 5;
         $todos = 10;
 
-        // for ($i = 0; $i < $lists; $i++) {
-        //     TodoList::factory()
-        //         ->has(Todo::factory()->count(10))
-        //         ->create([
-        //             'name' => 'test todo list ' . $i + 1
-        //     ]);
-        // }
-
         TodoList::factory()
             ->count(5)
             ->has(Todo::factory()->count(10))
