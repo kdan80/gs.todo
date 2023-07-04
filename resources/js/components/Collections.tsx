@@ -10,8 +10,8 @@ const Collections = ({ todoLists }: Props) => {
     return (
         <div>
             <ul>
-                {todoLists.map((todoList, index) => (
-                    <li key={index}>{todoList.name}</li>
+                {todoLists.map(todoList => (
+                    <li key={todoList.id}>{todoList.name}</li>
                 ))}
             </ul>
         </div>

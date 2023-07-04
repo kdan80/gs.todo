@@ -25,8 +25,6 @@ Route::get('/', function () {
 
 Route::get('/Dashboard', function () {
 
-    //$todos = Todo::all();
-
     return Inertia::render('Dashboard', [ 
         "name" => "Kieran",
         "pagination" => TodoList::paginate(20)
@@ -40,12 +38,6 @@ Route::post('/todo', function () {
         'completed' => 'required'
     ]);
 
-    // Todo::create([
-    //     'description' => $todo->description,
-    //     'completed' => 0,
-    //     'created_at' => now(),
-    //     'updated_at' => now()
-    // ]);
     Todo::create($todo);
 
     return redirect('/Dashboard');
