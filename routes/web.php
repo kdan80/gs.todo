@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Inertia\Inertia;
-use App\Models\Todo;
+use App\Models\TodoList;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Route::get('/Dashboard', function () {
 
     return Inertia::render('Dashboard', [ 
         "name" => "Kieran",
-        "todos" => Todo::paginate(20)
+        "pagination" => TodoList::paginate(20)
     ]);
 });
 

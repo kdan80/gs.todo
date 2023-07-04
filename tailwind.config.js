@@ -1,14 +1,22 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * @format
+ * @type {import('tailwindcss').Config}
+ */
 
 export default {
-  content: [
-      './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-      './storage/framework/views/*.php',
-      './resources/views/**/*.blade.php',
-      './resources/js/**/*.tsx',
-  ],
-  theme: {
-      extend: {}
-  },
-      plugins: [],
-  }
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.tsx',
+    ],
+    theme: {
+        extend: {
+            colors: {
+                'darkBlue': '#17181f',
+                'grey': '#2A2E32',
+            },
+        },
+    },
+    plugins: [],
+}
