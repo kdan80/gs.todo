@@ -8,12 +8,17 @@ interface Props {
 
 const Collections = ({ todoLists }: Props) => {
     return (
-        <div>
-            <ul>
-                {todoLists.map(todoList => (
-                    <li key={todoList.id}>{todoList.name}</li>
-                ))}
-            </ul>
+        <div className='h-full px-[5vw] text-white text-2xl bg-[#20212C] flex flex-col flex-justify'>
+            <div className='border-2 basis-1/12 flex flex-justify items-center'>
+                <div className=''>Collections</div>
+            </div>
+            <div className='border-2 basis-11/12'>
+                <ul className=''>
+                    {todoLists.map(todoList => (
+                        <li key={todoList.id}>{todoList.name}</li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }
