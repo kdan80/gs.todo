@@ -15,10 +15,13 @@ export default defineConfig({
         }),
         react(),
     ],
-    // server: {
-    //     host: true,
-    //     hmr: {
-    //         host: 'localhost',
-    //     },
-    // },
+    server: {
+        //host: true,
+        // cors: {
+        //     'origin': '*',
+        //     'credentials': true,
+        //     'preflightContinue': false,
+        //     'methods': ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD'],
+        // },
+    },
 })
