@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     @viteReactRefresh
-    @vite(['resources/js/app.tsx', "resources/js/Pages/{$page['component']}.tsx"])
+    @vite(['/var/www/html/resources/js/app.tsx', "/var/www/html/resources/js/Pages/{$page['component']}.tsx"])
     @inertiaHead
 </head>
 <body>
