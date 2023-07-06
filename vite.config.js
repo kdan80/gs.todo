@@ -16,12 +16,8 @@ export default defineConfig({
         react(),
     ],
     server: {
-        //host: true,
-        // cors: {
-        //     'origin': '*',
-        //     'credentials': true,
-        //     'preflightContinue': false,
-        //     'methods': ['POST', 'PUT', 'PATCH', 'GET', 'OPTIONS', 'HEAD'],
-        // },
+        hmr: {
+            host: '192.168.1.21',
+        },
     },
 })
