@@ -15,6 +15,10 @@ export default {
             colors: {
                 'darkBlue': '#17181f',
                 'grey': '#2A2E32',
+                'red': '#ff00ff',
+                'teal': '#6fc5bc',
+                'pink': '#fe75a1',
+                'purple': '#af68e6',
             },
         },
     },
