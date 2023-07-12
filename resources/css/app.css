@@ -1,3 +1,17 @@
+/** @format */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+#app {
+    height: 100%;
+    width: 100vw;
+}
+
+body,
+#app {
+    overflow: hidden;
+}
