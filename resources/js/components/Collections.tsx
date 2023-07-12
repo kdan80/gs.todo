@@ -19,7 +19,7 @@ const Collections = ({ todoLists }: Props) => {
                         <li
                             key={todoList.id}
                             className={`flex flex-row items-center gap-3`}>
-                            <Icon color={'green'} />
+                            <Icon color={todoList.color} />
                             {todoList.name}
                         </li>
                     ))}

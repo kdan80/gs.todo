@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react'
-import colorVariants from './colorVariants'
+import colorVariants, { IColorVariants } from './colorVariants'
 
 interface Props {
     color: string
@@ -19,7 +19,9 @@ const DottedLine = () => {
 const Icon = ({ color }: Props) => {
     return (
         <div
-            className={`h-12 w-12 ${colorVariants[color]} rounded-xl flex flex-col items-center gap-[4px] justify-center`}>
+            className={`h-12 w-12 ${
+                colorVariants[color as keyof IColorVariants]
+            } rounded-xl flex flex-col items-center gap-[4px] justify-center`}>
             <DottedLine />
             <DottedLine />
             <DottedLine />

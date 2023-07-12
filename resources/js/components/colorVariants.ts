@@ -1,6 +1,6 @@
 /** @format */
 
-type ColorVariants = {
+export interface IColorVariants {
     red: 'bg-red'
     teal: 'bg-teal'
     pink: 'bg-pink'
@@ -10,7 +10,10 @@ type ColorVariants = {
     green: 'bg-green'
 }
 
-const colorVariants: ColorVariants = {
+// Tailwind tree-shaking removes unused classes and as such dynamic classes are not recommended.
+// Instead we create a map obj and index whatever classes we wish to be shipped
+// They can now be used dynamically using obj indexing inside the className property
+const colorVariants: IColorVariants = {
     red: 'bg-red',
     teal: 'bg-teal',
     pink: 'bg-pink',
@@ -18,6 +21,6 @@ const colorVariants: ColorVariants = {
     yellow: 'bg-yellow',
     blue: 'bg-blue',
     green: 'bg-green',
-}
+} as const
 
 export default colorVariants

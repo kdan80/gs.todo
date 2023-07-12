@@ -14,7 +14,7 @@ class TodoListFactory extends Factory
 
         return [
             'name' => "test todo list " . $count,
-            'color' => "bg-pink",
+            'color' => "red",
             'created_at' => now(),
             'updated_at' => now()
         ];
