@@ -14,11 +14,14 @@ export default {
         extend: {
             colors: {
                 'darkBlue': '#17181f',
-                'grey': '#2A2E32',
-                'red': '#ff00ff',
+                'grey': '#2a2e32',
+                'red': '#ff1234',
                 'teal': '#6fc5bc',
                 'pink': '#fe75a1',
                 'purple': '#af68e6',
+                'yellow': '#fbd85d',
+                'blue': '#6da9e4',
+                'green': '#98d8aa',
             },
         },
     },
