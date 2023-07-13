@@ -13,10 +13,10 @@ const Dashboard = ({ pagination }: Props) => {
     console.log(pagination)
 
     return (
-        <div className='h-full w-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
+        <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
                 todoLists={pagination.data}
-                className={'w-full md:w-auto'}
+                className={'w-full md:w-1/4'}
             />
             <List
                 className={
