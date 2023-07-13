@@ -16,7 +16,7 @@ const Dashboard = ({ pagination }: Props) => {
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
                 todoLists={pagination.data}
-                className={'w-full md:w-1/4'}
+                className={'w-full md:w-80'}
             />
             <List
                 className={
