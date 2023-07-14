@@ -2,6 +2,8 @@
 
 import React from 'react'
 import Icon from './Icon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
     todoLists: TodoList[]
@@ -20,9 +22,23 @@ const Collections = ({ todoLists, className }: Props) => {
                     {todoLists.map(todoList => (
                         <li
                             key={todoList.id}
-                            className={`flex flex-row items-center gap-4 md:gap-3 overflow-hidden whitespace-nowrap md:text-lg`}>
-                            <Icon color={todoList.color} />
-                            {todoList.name}
+                            className={` flex flex-row items-center justify-between md:text-lg`}>
+                            <div
+                                className={`flex flex-row items-center cursor-pointer`}>
+                                <Icon color={todoList.color} />
+                                <span
+                                    className={`px-4 overflow-hidden whitespace-nowrap text-ellipsis`}>
+                                    {todoList.name}
+                                </span>
+                            </div>
+                            <button
+                                type='submit'
+                                className={`w-[32px] h-[32px] flex items-center justify-center text-red`}>
+                                <FontAwesomeIcon
+                                    icon={faTrashCan}
+                                    className='w-[18px] h-[18px]'
+                                />
+                            </button>
                         </li>
                     ))}
                 </ul>

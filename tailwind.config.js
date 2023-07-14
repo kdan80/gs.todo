@@ -16,7 +16,7 @@ export default {
             colors: {
                 'darkBlue': '#17181f',
                 'grey': '#2a2e32',
-                'red': '#ff1234',
+                'red': '#cF2E38',
                 'teal': '#6fc5bc',
                 'pink': '#fe75a1',
                 'purple': '#af68e6',
