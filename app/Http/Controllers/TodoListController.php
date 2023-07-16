@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TodoList;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class TodoListController extends Controller
 {
@@ -23,10 +25,10 @@ class TodoListController extends Controller
 
         print_r("Deleted: " . $success . "\n");
 
-        // return response()->json([
-        //     "message" => "success"
-        // ], 200);
-
         return redirect()->route('dashboard.get')->with("message", "success");
+
+        # Alternative responses;
+        # return Inertia::location(route('dashboard.get'));
+        # return Redirect::back()->with('success', 'success');
     }
 }

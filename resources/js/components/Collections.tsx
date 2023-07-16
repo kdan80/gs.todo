@@ -5,6 +5,7 @@ import Icon from './Icon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { Inertia } from '@inertiajs/inertia'
+import { Link } from '@inertiajs/react'
 
 interface Props {
     todoLists: TodoList[]
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const Collections = ({ todoLists, className }: Props) => {
-    const destroy = (id: any) => {
+    const destroy = (id: number) => {
         Inertia.delete(`todolist/${id}`)
     }
 
@@ -36,15 +37,17 @@ const Collections = ({ todoLists, className }: Props) => {
                                     {todoList.name}
                                 </span>
                             </div>
-                            <button
-                                type='submit'
-                                onClick={() => destroy(todoList.id)}
+                            <Link
+                                href={`/todolist/${todoList.id}`}
+                                method='delete'
+                                as='button'
+                                type='button'
                                 className={`w-[32px] h-[32px] flex items-center justify-center text-red`}>
                                 <FontAwesomeIcon
                                     icon={faTrashCan}
                                     className='w-[18px] h-[18px]'
                                 />
-                            </button>
+                            </Link>
                         </li>
                     ))}
                 </ul>
