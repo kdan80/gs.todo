@@ -23,13 +23,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/Dashboard', function () {
+Route::get('/dashboard', function () {
 
     return Inertia::render('Dashboard', [ 
         "name" => "Kieran",
         "pagination" => TodoList::paginate(20)
     ]);
-});
+})->name("dashboard.get");
 
 Route::post('/todo', function () {
 
@@ -40,7 +40,8 @@ Route::post('/todo', function () {
 
     Todo::create($todo);
 
-    return redirect('/Dashboard');
+    return redirect('/dashboard');
 
 });
 
+Route::delete("/todolist/{id}", "App\Http\Controllers\TodoListController@destroy")->name("todolist.destroy");
