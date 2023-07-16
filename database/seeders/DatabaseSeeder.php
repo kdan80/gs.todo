@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $todos = 10;
 
         TodoList::factory()
-            ->count(5)
+            ->count(25)
             ->has(Todo::factory()->count(10))
             ->create();        
     }

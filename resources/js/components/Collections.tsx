@@ -19,11 +19,11 @@ const Collections = ({ todoLists, className }: Props) => {
 
     return (
         <div
-            className={`${className} h-full px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
-            <div className='basis-2/12 md:basis-1/12 md:py-10 md:text-xl flex flex-justify items-center'>
+            className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
+            <div className='py-10 md:text-xl flex flex-justify items-center'>
                 <div className='font-bold'>Collections</div>
             </div>
-            <div className='basis-10/12 md:basis-11/12'>
+            <div className='flex-grow overflow-auto no-scrollbar'>
                 <ul className='space-y-5 md:space-y-4'>
                     {todoLists.map(todoList => (
                         <li
@@ -51,6 +51,9 @@ const Collections = ({ todoLists, className }: Props) => {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div className='py-8 md:text-xl flex flex-justify items-center'>
+                <div className='font-bold'></div>
             </div>
         </div>
     )
