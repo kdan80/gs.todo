@@ -28,7 +28,7 @@ const Collections = ({ todoLists, className }: Props) => {
                     {todoLists.map(todoList => (
                         <li
                             key={todoList.id}
-                            className={` flex flex-row items-center justify-between md:text-lg`}>
+                            className={`flex flex-row items-center justify-between md:text-lg`}>
                             <div
                                 className={`flex flex-row items-center cursor-pointer`}>
                                 <Icon color={todoList.color} />
@@ -52,7 +52,7 @@ const Collections = ({ todoLists, className }: Props) => {
                     ))}
                 </ul>
             </div>
-            <div className='py-8 md:text-xl flex flex-justify items-center'>
+            <div className='py-8 md:py-12 md:text-xl flex flex-justify items-center'>
                 <div className='font-bold'></div>
             </div>
         </div>
