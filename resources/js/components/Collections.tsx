@@ -3,7 +3,7 @@
 import React from 'react'
 import Icon from './Icon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Inertia } from '@inertiajs/inertia'
 import { Link } from '@inertiajs/react'
 
@@ -20,7 +20,7 @@ const Collections = ({ todoLists, className }: Props) => {
     return (
         <div
             className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
-            <div className='py-10 md:text-xl flex flex-justify items-center'>
+            <div className='py-10 md:text-xl flex justify-between items-center'>
                 <div className='font-bold'>Collections</div>
             </div>
             <div className='flex-grow overflow-auto no-scrollbar'>
@@ -52,8 +52,11 @@ const Collections = ({ todoLists, className }: Props) => {
                     ))}
                 </ul>
             </div>
-            <div className='py-8 md:py-12 md:text-xl flex flex-justify items-center'>
-                <div className='font-bold'></div>
+            <div className='py-8 md:py-12 md:text-xl text-xl md:text-base text-gray-300 flex justify-center items-center'>
+                <button className='border-2 border-gray-600 py-4 md:py-3 w-full rounded-full flex justify-center items-center gap-2 md:gap-3'>
+                    <FontAwesomeIcon icon={faPlus} />
+                    <span>New List</span>
+                </button>
             </div>
         </div>
     )
