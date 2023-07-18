@@ -18,28 +18,31 @@ const NewListButton = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault()
         router.post('/todolist', { name: name })
+        setName('')
     }
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className='border-2 border-gray-600 h-14 md:h-12 w-full rounded-full flex items-center gap-4 md:gap-3'>
-            <button
-                type='submit'
-                className={`h-full bg-gray-600 w-14 md:w-12 flex justify-center items-center rounded-full`}>
-                <FontAwesomeIcon
-                    icon={faPlus}
-                    className=''
+        <div className='border-2 border-gray-600 h-14 md:h-12 w-full rounded-full'>
+            <form
+                onSubmit={handleSubmit}
+                className='w-full h-full flex items-center justify-start gap-4 md:gap-3'>
+                <button
+                    type='submit'
+                    className={`h-14 md:h-12 bg-gray-600 w-14 md:w-12 flex justify-center items-center rounded-full`}>
+                    <FontAwesomeIcon
+                        icon={faPlus}
+                        className=''
+                    />
+                </button>
+                <input
+                    value={name}
+                    onChange={handleInputChange}
+                    className={`bg-transparent grow`}
+                    type='text'
+                    placeholder='Create a New List'
                 />
-            </button>
-            <input
-                value={name}
-                onChange={handleInputChange}
-                className={`bg-transparent`}
-                type='text'
-                placeholder='New List'
-            />
-        </form>
+            </form>
+        </div>
     )
 }
 

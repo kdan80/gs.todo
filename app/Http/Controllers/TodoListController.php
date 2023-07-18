@@ -28,7 +28,7 @@ class TodoListController extends Controller
         $name = $request->get('name');
 
         if(!$name) {
-            #throw TodoException::noDescription();
+            # TODO: Error Handling
         }
 
         $todoList = new TodoList;
@@ -38,7 +38,7 @@ class TodoListController extends Controller
         $success = $todoList->save();
 
         if(!$success) {
-            #throw TodoException::failedToSave();
+            # TODO: Error Handling
         }
 
         return redirect()->route('dashboard.get')->with("message", "success");
@@ -49,13 +49,13 @@ class TodoListController extends Controller
         $todoList = TodoList::find($id);
 
         if (!$todoList) {
-            #throw TodoException::todoNotFound();
+            # TODO: Error Handling
         }
 
         $success = $todoList->delete();
 
         if (!$success) {
-            #throw TodoException::failedToDelete();
+            # TODO: Error Handling
         }
 
         print_r("Deleted: " . $success . "\n");
