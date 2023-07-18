@@ -6,9 +6,44 @@ use Illuminate\Http\Request;
 use App\Models\TodoList;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Arr;
 
 class TodoListController extends Controller
 {
+
+    public function store(Request $request) {
+
+        $colors = [
+            "red",
+            "teal",
+            "pink",
+            "purple",
+            "yellow",
+            "blue",
+            "green"
+        ];
+
+        $color = Arr::random($colors);
+
+        $name = $request->get('name');
+
+        if(!$name) {
+            #throw TodoException::noDescription();
+        }
+
+        $todoList = new TodoList;
+        $todoList->name = $name;
+        $todoList->color = $color;
+
+        $success = $todoList->save();
+
+        if(!$success) {
+            #throw TodoException::failedToSave();
+        }
+
+        return redirect()->route('dashboard.get')->with("message", "success");
+    }
+
     public function destroy($id) {
 
         $todoList = TodoList::find($id);

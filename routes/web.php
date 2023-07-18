@@ -44,4 +44,5 @@ Route::post('/todo', function () {
 
 });
 
+Route::post("/todolist", "App\Http\Controllers\TodoListController@store")->name("todolist.store");
 Route::delete("/todolist/{id}", "App\Http\Controllers\TodoListController@destroy")->name("todolist.destroy");
