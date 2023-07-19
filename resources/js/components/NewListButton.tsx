@@ -37,7 +37,7 @@ const NewListButton = () => {
                 <input
                     value={name}
                     onChange={handleInputChange}
-                    className={`bg-transparent grow`}
+                    className={`bg-transparent grow mr-6 md:mr-4`}
                     type='text'
                     placeholder='Create a New List'
                 />

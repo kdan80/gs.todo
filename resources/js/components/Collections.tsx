@@ -31,7 +31,7 @@ const Collections = ({ todoLists, className }: Props) => {
                             key={todoList.id}
                             className={`flex flex-row items-center justify-between md:text-lg`}>
                             <div
-                                className={`flex flex-row items-center cursor-pointer`}>
+                                className={`flex flex-row items-center cursor-pointer grow overflow-hidden whitespace-nowrap text-ellipsis`}>
                                 <Icon color={todoList.color} />
                                 <span
                                     className={`px-4 overflow-hidden whitespace-nowrap text-ellipsis`}>
@@ -43,7 +43,7 @@ const Collections = ({ todoLists, className }: Props) => {
                                 method='delete'
                                 as='button'
                                 type='button'
-                                className={`w-[32px] h-[32px] flex items-center justify-center text-red`}>
+                                className={`min-w-[32px] h-[32px] flex items-center justify-center text-red`}>
                                 <FontAwesomeIcon
                                     icon={faTrashCan}
                                     className='w-[18px] h-[18px]'
