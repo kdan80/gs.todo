@@ -13,12 +13,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $lists = 5;
-        $todos = 10;
+        $lists = 25;
+        $todos = 25;
 
         TodoList::factory()
-            ->count(25)
-            ->has(Todo::factory()->count(10))
+            ->count($lists)
+            ->has(Todo::factory()->count($todos))
             ->create();        
     }
 }

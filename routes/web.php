@@ -16,18 +16,18 @@ use App\Models\TodoList;
 |
 */
 
+// Route::get('/', function () {
+
+//     return Inertia::render('Welcome', [ 
+//         "name" => "Kieran",
+//     ]);
+// });
+
 Route::get('/', function () {
-
-    return Inertia::render('Welcome', [ 
-        "name" => "Kieran",
-    ]);
-});
-
-Route::get('/dashboard', function () {
 
     return Inertia::render('Dashboard', [ 
         "name" => "Kieran",
-        "pagination" => TodoList::paginate(20)
+        "pagination" => TodoList::with('todos')->paginate(20)
     ]);
 })->name("dashboard.get");
 
