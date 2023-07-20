@@ -19,7 +19,6 @@ use App\Models\TodoList;
 Route::get('/', function () {
 
     return Inertia::render('Dashboard', [ 
-        "name" => "Kieran",
         "pagination" => TodoList::with('todos')->paginate(20)
     ]);
 })->name("dashboard.get");
