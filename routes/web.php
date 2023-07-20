@@ -16,13 +16,6 @@ use App\Models\TodoList;
 |
 */
 
-// Route::get('/', function () {
-
-//     return Inertia::render('Welcome', [ 
-//         "name" => "Kieran",
-//     ]);
-// });
-
 Route::get('/', function () {
 
     return Inertia::render('Dashboard', [ 
