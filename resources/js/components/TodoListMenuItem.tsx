@@ -9,14 +9,15 @@ interface Props {
     id: number
     color: string
     name: string
-    className?: string
+    observerRef?: React.RefObject<HTMLLIElement>
 }
 
-const TodoListMenuItem = ({ id, color, name, className }: Props) => {
+const TodoListMenuItem = ({ id, color, name, observerRef }: Props) => {
     return (
         <li
             key={id}
-            className={`flex flex-row items-center justify-between md:text-lg ${className}`}>
+            className={`flex flex-row items-center justify-between md:text-lg`}
+            ref={observerRef}>
             <div
                 className={`flex flex-row items-center cursor-pointer grow overflow-hidden whitespace-nowrap text-ellipsis`}>
                 <Icon color={color} />

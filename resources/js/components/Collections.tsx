@@ -1,8 +1,10 @@
 /** @format */
 
+import React from 'react'
 import NewListButton from './NewListButton'
 import { Inertia } from '@inertiajs/inertia'
 import TodoListMenuItem from './TodoListMenuItem'
+import { useInView } from 'react-intersection-observer'
 
 interface Props {
     todoLists: TodoList[]
@@ -14,6 +16,14 @@ const Collections = ({ todoLists, className }: Props) => {
         Inertia.delete(`todolist/${id}`)
     }
 
+    const [ref, inView, entry] = useInView({
+        threshold: 1,
+    })
+    //const ref = React.useRef(null)
+    React.useEffect(() => {
+        console.log('in view: ', inView)
+    }, [inView])
+
     return (
         <div
             className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
@@ -23,16 +33,21 @@ const Collections = ({ todoLists, className }: Props) => {
             <div className='flex-grow overflow-auto no-scrollbar'>
                 <ul className='space-y-5 md:space-y-4'>
                     {todoLists.map((todoList, index, arr) => {
-                        return (
+                        return arr.length - 1 === index ? (
                             <TodoListMenuItem
                                 key={todoList.id}
                                 id={todoList.id}
                                 color={todoList.color}
                                 name={todoList.name}
-                                // If this is the last element in the array tag it so that IntersectionObserver can find it
-                                className={
-                                    arr.length - 1 === index ? 'last' : ''
-                                }
+                                // If this is the last element forward a ref so that IntersectionObserver can find it
+                                observerRef={ref}
+                            />
+                        ) : (
+                            <TodoListMenuItem
+                                key={todoList.id}
+                                id={todoList.id}
+                                color={todoList.color}
+                                name={todoList.name}
                             />
                         )
                     })}
@@ -46,3 +61,25 @@ const Collections = ({ todoLists, className }: Props) => {
 }
 
 export default Collections
+
+// if (arr.length - 1 === index) {
+//     return (
+//         <TodoListMenuItem
+//             key={todoList.id}
+//             id={todoList.id}
+//             color={todoList.color}
+//             name={todoList.name}
+//             // If this is the last element forward a ref so that IntersectionObserver can find it
+//             ref={ref}
+//         />
+//     )
+// } else {
+//     return (
+//         <TodoListMenuItem
+//             key={todoList.id}
+//             id={todoList.id}
+//             color={todoList.color}
+//             name={todoList.name}
+//         />
+//     )
+// }
