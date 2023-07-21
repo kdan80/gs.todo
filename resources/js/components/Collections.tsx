@@ -12,10 +12,6 @@ interface Props {
 }
 
 const Collections = ({ todoLists, className }: Props) => {
-    const destroy = (id: number) => {
-        Inertia.delete(`todolist/${id}`)
-    }
-
     const [ref, inView, entry] = useInView({
         threshold: 1,
     })
@@ -61,25 +57,3 @@ const Collections = ({ todoLists, className }: Props) => {
 }
 
 export default Collections
-
-// if (arr.length - 1 === index) {
-//     return (
-//         <TodoListMenuItem
-//             key={todoList.id}
-//             id={todoList.id}
-//             color={todoList.color}
-//             name={todoList.name}
-//             // If this is the last element forward a ref so that IntersectionObserver can find it
-//             ref={ref}
-//         />
-//     )
-// } else {
-//     return (
-//         <TodoListMenuItem
-//             key={todoList.id}
-//             id={todoList.id}
-//             color={todoList.color}
-//             name={todoList.name}
-//         />
-//     )
-// }
