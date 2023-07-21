@@ -1,22 +1,36 @@
 /** @format */
 
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import NewListButton from './NewListButton'
-import { Inertia } from '@inertiajs/inertia'
+import axios from 'axios'
 import TodoListMenuItem from './TodoListMenuItem'
 import { useInView } from 'react-intersection-observer'
 
 interface Props {
     todoLists: TodoList[]
+    setTodoLists: Dispatch<SetStateAction<TodoList[]>>
+    nextPage: string
     className: string
 }
 
-const Collections = ({ todoLists, className }: Props) => {
+const Collections = ({
+    todoLists,
+    setTodoLists,
+    nextPage,
+    className,
+}: Props) => {
     const [ref, inView, entry] = useInView({
         threshold: 1,
     })
     //const ref = React.useRef(null)
     React.useEffect(() => {
+        const fecthNextData = async () => {
+            const response = await axios.get(nextPage)
+            console.log('res: ', response.data)
+        }
+
+        fecthNextData()
+
         console.log('in view: ', inView)
     }, [inView])
 
