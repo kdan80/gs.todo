@@ -40,7 +40,7 @@ const Collections = ({ todoLists, className }: Props) => {
                                 color={todoList.color}
                                 name={todoList.name}
                                 // If this is the last element forward a ref so that IntersectionObserver can find it
-                                observerRef={ref}
+                                ref={ref}
                             />
                         ) : (
                             <TodoListMenuItem
