@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $lists = 25;
+        $lists = 50;
         $todos = 25;
 
         TodoList::factory()

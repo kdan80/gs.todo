@@ -5,6 +5,7 @@ import NewListButton from './NewListButton'
 import axios from 'axios'
 import TodoListMenuItem from './TodoListMenuItem'
 import { useInView } from 'react-intersection-observer'
+import { Inertia } from '@inertiajs/inertia'
 
 interface Props {
     todoLists: TodoList[]
@@ -23,13 +24,17 @@ const Collections = ({
         threshold: 1,
     })
     //const ref = React.useRef(null)
+
     React.useEffect(() => {
         const fecthNextData = async () => {
             const response = await axios.get(nextPage)
             console.log('res: ', response.data)
+            setTodoLists(current => current.concat(response.data))
         }
 
-        fecthNextData()
+        if (inView) {
+            fecthNextData()
+        }
 
         console.log('in view: ', inView)
     }, [inView])

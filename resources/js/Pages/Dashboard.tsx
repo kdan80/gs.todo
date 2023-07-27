@@ -12,7 +12,7 @@ interface Props {
 const Dashboard = ({ pagination }: Props) => {
     const [todoLists, setTodoLists] = React.useState(pagination.data)
     const [nextPage, setNextPage] = React.useState(pagination.next_page_url)
-    console.log(pagination)
+    console.log('data: ', pagination.data)
 
     return (
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>

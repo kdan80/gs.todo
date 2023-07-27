@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\TodoList;
 
@@ -16,10 +17,16 @@ use App\Models\TodoList;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+
+    $todoLists = TodoList::with('todos')->paginate(20);
+
+    if ($request->wantsJson()) {
+        return $todoLists;
+    }
 
     return Inertia::render('Dashboard', [ 
-        "pagination" => TodoList::with('todos')->paginate(20)
+        "pagination" => $todoLists
     ]);
 })->name("dashboard.get");
 
