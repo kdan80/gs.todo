@@ -10,6 +10,7 @@ import { Inertia } from '@inertiajs/inertia'
 interface Props {
     todoLists: TodoList[]
     setTodoLists: Dispatch<SetStateAction<TodoList[]>>
+    setNextPage: Dispatch<SetStateAction<string>>
     nextPage: string
     className: string
 }
@@ -18,26 +19,26 @@ const Collections = ({
     todoLists,
     setTodoLists,
     nextPage,
+    setNextPage,
     className,
 }: Props) => {
     const [ref, inView, entry] = useInView({
         threshold: 1,
     })
-    //const ref = React.useRef(null)
 
     React.useEffect(() => {
         const fecthNextData = async () => {
             const response = await axios.get(nextPage)
-            console.log('res: ', response.data)
-            setTodoLists(current => current.concat(response.data))
+            setNextPage(response.data.next_page_url)
+            setTodoLists(current => [...current, ...response.data.data])
         }
 
-        if (inView) {
+        if (inView && nextPage !== null) {
             fecthNextData()
         }
 
-        console.log('in view: ', inView)
-    }, [inView])
+        //console.log('in view: ', inView)
+    }, [inView, nextPage])
 
     return (
         <div
