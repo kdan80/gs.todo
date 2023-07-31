@@ -2,9 +2,9 @@
 
 import React from 'react'
 import Icon from './Icon'
+import { router } from '@inertiajs/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { Link } from '@inertiajs/react'
 
 interface Props {
     id: number
@@ -13,6 +13,11 @@ interface Props {
 }
 
 const TodoListMenuItem = React.forwardRef(({ id, color, name }: Props, ref) => {
+    const handleSubmit = (e: any) => {
+        e.preventDefault()
+        router.delete(`/todolist/${id}`)
+    }
+
     return (
         <li
             key={id}
@@ -26,17 +31,16 @@ const TodoListMenuItem = React.forwardRef(({ id, color, name }: Props, ref) => {
                     {name}
                 </span>
             </div>
-            <Link
-                href={`/todolist/${id}`}
-                method='delete'
-                as='button'
-                type='button'
-                className={`min-w-[32px] h-[32px] flex items-center justify-center text-red`}>
-                <FontAwesomeIcon
-                    icon={faTrashCan}
-                    className='w-[18px] h-[18px]'
-                />
-            </Link>
+            <form onSubmit={handleSubmit}>
+                <button
+                    type='submit'
+                    className={`min-w-[32px] h-[32px] flex items-center justify-center text-red`}>
+                    <FontAwesomeIcon
+                        icon={faTrashCan}
+                        className='w-[18px] h-[18px]'
+                    />
+                </button>
+            </form>
         </li>
     )
 })
