@@ -8,8 +8,8 @@ import TodoListMenuItem from './TodoListMenuItem'
 interface Props {
     todoLists: TodoList[]
     setTodoLists: Dispatch<SetStateAction<TodoList[]>>
-    setNextPage: Dispatch<SetStateAction<string>>
-    nextPage: string
+    setNextPage: Dispatch<SetStateAction<string | null>>
+    nextPage: string | null
     className: string
 }
 
