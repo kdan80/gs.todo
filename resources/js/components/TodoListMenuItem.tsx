@@ -23,7 +23,6 @@ const TodoListMenuItem = React.forwardRef(
             const updatedTodoLists = todoLists.filter(todoList => {
                 return todoList.id !== id
             })
-            console.log('del: ', updatedTodoLists)
             setTodoLists(updatedTodoLists)
         }
 

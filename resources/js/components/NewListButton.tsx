@@ -1,13 +1,18 @@
 /** @format */
 
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { router } from '@inertiajs/react'
 import { Inertia } from '@inertiajs/inertia'
 import { Link } from '@inertiajs/react'
 
-const NewListButton = () => {
+interface Props {
+    todoLists: TodoList[]
+    setTodoLists: Dispatch<SetStateAction<TodoList[]>>
+}
+
+const NewListButton = ({ todoLists, setTodoLists }: Props) => {
     const [name, setName] = React.useState<string>('')
 
     const handleInputChange = (e: any) => {
