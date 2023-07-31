@@ -29,7 +29,7 @@ const Collections = ({
         })
 
         const fecthNextData = async () => {
-            const response = await axios.get(nextPage)
+            const response = await axios.get(nextPage!)
             setNextPage(response.data.next_page_url)
             setTodoLists(current => [...current, ...response.data.data])
         }
@@ -56,6 +56,8 @@ const Collections = ({
                             <TodoListMenuItem
                                 key={todoList.id}
                                 id={todoList.id}
+                                todoLists={todoLists}
+                                setTodoLists={setTodoLists}
                                 color={todoList.color}
                                 name={todoList.name}
                                 // If this is the last element forward a ref so that IntersectionObserver can find it
@@ -65,6 +67,8 @@ const Collections = ({
                             <TodoListMenuItem
                                 key={todoList.id}
                                 id={todoList.id}
+                                todoLists={todoLists}
+                                setTodoLists={setTodoLists}
                                 color={todoList.color}
                                 name={todoList.name}
                             />
