@@ -21,7 +21,7 @@ model TodoList {
 model Todo {
   id            Int         @id @default(autoincrement())
   description   String
-  completed     Boolean     @default(false)
+  completed     Int         @default(0)
   todoListId    Int         @unique
   todoList      TodoList    @relation(fields: [todoListId], references: [id])
   createdAt     DateTime    @default(now()) @map(name: "created_at")
