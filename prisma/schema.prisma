@@ -15,4 +15,15 @@ model TodoList {
   name          String
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
+  todos         Todo[]
+}
+
+model Todo {
+  id            Int         @id @default(autoincrement())
+  description   String
+  completed     Boolean     @default(false)
+  todoListId    Int         @unique
+  todoList      TodoList    @relation(fields: [todoListId], references: [id])
+  createdAt     DateTime    @default(now()) @map(name: "created_at")
+  updatedAt     DateTime    @updatedAt @map(name: "updated_at")
 }
