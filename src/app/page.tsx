@@ -1,21 +1,23 @@
 import React from "react";
 
-const fetch_todo_lists = async () => {
-  const res = await fetch(process.env.URL + "/api/todolists");
+async function fetchTodoLists() {
+  const res = await fetch(process.env.URL + "/api/todolists", {
+    cache: "no-store",
+  });
 
-  if (!res.ok) return console.log(res);
+  if (!res.ok) {
+    throw new Error("Failed to fetch TodoLists");
+  }
   return res.json();
-};
+}
 
-const Home = async () => {
-  const todo_lists = await fetch_todo_lists();
-  console.log("data", todo_lists);
+export default async function Page() {
+  const todoLists = await fetchTodoLists();
+  console.log("data", todoLists);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       Hello world
     </main>
   );
-};
-
-export default Home;
+}
