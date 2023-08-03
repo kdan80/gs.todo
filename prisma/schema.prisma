@@ -13,6 +13,7 @@ datasource db {
 model TodoList {
   id            Int         @id @default(autoincrement())
   name          String
+  color         String      
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
   todos         Todo[]

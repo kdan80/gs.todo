@@ -16,14 +16,21 @@ const fetchTodoLists = async () => {
 
 const Page = async () => {
     const todoLists = await fetchTodoLists()
+    console.log('tl: todoLists')
     return (
-        <div>
-            Dashboard
-            <ul>
-                {todoLists.map((todoList: any, index: number) => (
-                    <li key={todoList.id}>{todoList.name}</li>
-                ))}
-            </ul>
+        <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
+            {/* <Collections
+                todoLists={todoLists}
+                setTodoLists={setTodoLists}
+                nextPage={nextPage}
+                setNextPage={setNextPage}
+                className={'w-full md:w-80'}
+            />
+            <List
+                className={
+                    'w-full h-full absolute left-full border-2 border-red text-white'
+                }
+            /> */}
         </div>
     )
 }
