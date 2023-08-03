@@ -41,3 +41,20 @@ export const POST = async (req: NextRequest) => {
         return NextResponse.json(err, { status: 501 })
     }
 }
+
+export const DELETE = async (req: NextRequest) => {
+    try {
+        const { id } = await req.json()
+
+        const todoList = await prisma.todoList.delete({
+            where: {
+                id: id,
+            },
+        })
+
+        return NextResponse.json(todoList, { status: 200 })
+    } catch (err) {
+        console.log(err)
+        return NextResponse.json(err, { status: 501 })
+    }
+}
