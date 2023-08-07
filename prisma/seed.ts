@@ -1,8 +1,6 @@
 /** @format */
 
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import prisma from './client'
 
 const listsToCreate = 50
 const todosToCreate = 10
