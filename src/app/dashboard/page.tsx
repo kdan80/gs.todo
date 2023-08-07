@@ -9,14 +9,15 @@ const fetchTodoLists = async () => {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to fetch TodoLists')
+        console.log('Failed to fetch TodoLists')
+        //throw new Error('Failed to fetch TodoLists')
     }
     return res.json()
 }
 
 const Page = async () => {
     const todoLists = await fetchTodoLists()
-    console.log('tl: todoLists')
+    console.log('tl: ', todoLists)
     return (
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             {/* <Collections
