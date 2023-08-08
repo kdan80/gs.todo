@@ -24,6 +24,15 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: NextRequest) => {
     try {
+        const todoLists = await prisma.todoList.findMany()
+
+        if (todoLists.length >= 10) {
+            return NextResponse.json(
+                { message: 'Only 10 todo lists are permitted in this demo.' },
+                { status: 403 }
+            )
+        }
+
         const candidateTodoList = await req.json()
 
         if (!candidateTodoList.color) {

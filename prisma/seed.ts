@@ -2,7 +2,7 @@
 
 import prisma from './client'
 
-const listsToCreate = 50
+const listsToCreate = 10
 const todosToCreate = 10
 
 const colors = ['red', 'teal', 'pink', 'purple', 'yellow', 'blue', 'green']
