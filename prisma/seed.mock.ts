@@ -158,32 +158,32 @@ const todoLists = [
     },
 ]
 
-async function main() {
-    todoLists.map(async todoList => {
-        await prisma.todoList.create({
-            data: {
-                name: todoList.name,
-                color: todoList.color,
-                todos: {
-                    create: todoList.todos.map(todo => {
-                        return {
-                            description: todo.description,
-                            completed: 0,
-                        }
-                    }),
+const main = async () => {
+    try {
+        todoLists.map(async todoList => {
+            await prisma.todoList.create({
+                data: {
+                    name: todoList.name,
+                    color: todoList.color,
+                    todos: {
+                        create: todoList.todos.map(todo => {
+                            return {
+                                description: todo.description,
+                                completed: 0,
+                            }
+                        }),
+                    },
                 },
-            },
-            include: {
-                todos: true,
-            },
+                include: {
+                    todos: true,
+                },
+            })
         })
-    })
+    } catch (err) {
+        console.log(err)
+    } finally {
+        await prisma.$disconnect()
+    }
 }
 
 main()
-    .catch(err => {
-        console.log(err)
-    })
-    .finally(async () => {
-        await prisma.$disconnect()
-    })
