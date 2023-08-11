@@ -1,6 +1,7 @@
 /** @format */
 
 import React from 'react'
+import Collections from './Collections'
 import '../app.css'
 
 const fetchTodoLists = async () => {
@@ -20,14 +21,12 @@ const Page = async () => {
     console.log('tl: ', todoLists)
     return (
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
-            {/* <Collections
+            <Collections
                 todoLists={todoLists}
-                setTodoLists={setTodoLists}
-                nextPage={nextPage}
-                setNextPage={setNextPage}
+                //setTodoLists={setTodoLists}
                 className={'w-full md:w-80'}
             />
-            <List
+            {/* <List
                 className={
                     'w-full h-full absolute left-full border-2 border-red text-white'
                 }

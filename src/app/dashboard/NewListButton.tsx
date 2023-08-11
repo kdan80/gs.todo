@@ -1,4 +1,5 @@
 /** @format */
+'use client'
 
 import React, { Dispatch, SetStateAction } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,12 +21,7 @@ const NewListButton = ({ todoLists, setTodoLists }: Props) => {
     const handleSubmit = (e: any) => {
         e.preventDefault()
         const data = { name }
-        router.post('/todolist', data, {
-            onSuccess: page => {
-                const message = page.props.message
-                console.log('mess: ', message)
-            },
-        })
+
         //setTodoLists([...todoLists])
         setName('')
     }

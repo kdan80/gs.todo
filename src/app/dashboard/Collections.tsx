@@ -6,19 +6,11 @@ import NewListButton from './NewListButton'
 
 interface Props {
     todoLists: TodoList[]
-    setTodoLists: React.Dispatch<React.SetStateAction<TodoList[]>>
-    setNextPage: React.Dispatch<React.SetStateAction<string | null>>
-    nextPage: string | null
+    //setTodoLists: React.Dispatch<React.SetStateAction<TodoList[]>>
     className: string
 }
 
-const Collections = ({
-    todoLists,
-    setTodoLists,
-    nextPage,
-    setNextPage,
-    className,
-}: Props) => {
+const Collections = ({ todoLists, className }: Props) => {
     return (
         <div
             className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
@@ -33,18 +25,16 @@ const Collections = ({
                                 key={todoList.id}
                                 id={todoList.id}
                                 todoLists={todoLists}
-                                setTodoLists={setTodoLists}
+                                //setTodoLists={setTodoLists}
                                 color={todoList.color}
                                 name={todoList.name}
-                                // If this is the last element forward a ref so that IntersectionObserver can find it
-                                ref={ref}
                             />
                         ) : (
                             <TodoListMenuItem
                                 key={todoList.id}
                                 id={todoList.id}
                                 todoLists={todoLists}
-                                setTodoLists={setTodoLists}
+                                //setTodoLists={setTodoLists}
                                 color={todoList.color}
                                 name={todoList.name}
                             />
