@@ -17,12 +17,12 @@ const fetchTodoLists = async () => {
 }
 
 const Page = async () => {
-    const todoLists = await fetchTodoLists()
-    console.log('tl: ', todoLists)
+    const serverTodoLists = await fetchTodoLists()
+    console.log('tl: ', serverTodoLists)
     return (
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
-                todoLists={todoLists}
+                serverTodoLists={serverTodoLists}
                 //setTodoLists={setTodoLists}
                 className={'w-full md:w-80'}
             />

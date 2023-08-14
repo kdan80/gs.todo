@@ -1,16 +1,27 @@
 /** @format */
+'use client'
 
 import React from 'react'
 import TodoListMenuItem from './TodoListMenuItem'
 import NewListButton from './NewListButton'
 
 interface Props {
-    todoLists: TodoList[]
-    //setTodoLists: React.Dispatch<React.SetStateAction<TodoList[]>>
+    serverTodoLists: TodoList[]
     className: string
 }
 
-const Collections = ({ todoLists, className }: Props) => {
+const Collections = ({ serverTodoLists, className }: Props) => {
+    const [todoLists, setTodoLists] =
+        React.useState<TodoList[]>(serverTodoLists)
+
+    const deleteTodoList = (id: number) => {
+        const updatedTodoLists = todoLists.filter(todoList => {
+            return todoList.id !== id
+        })
+
+        setTodoLists(updatedTodoLists)
+    }
+
     return (
         <div
             className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
@@ -24,8 +35,7 @@ const Collections = ({ todoLists, className }: Props) => {
                             <TodoListMenuItem
                                 key={todoList.id}
                                 id={todoList.id}
-                                todoLists={todoLists}
-                                //setTodoLists={setTodoLists}
+                                deleteTodoList={deleteTodoList}
                                 color={todoList.color}
                                 name={todoList.name}
                             />
@@ -33,8 +43,7 @@ const Collections = ({ todoLists, className }: Props) => {
                             <TodoListMenuItem
                                 key={todoList.id}
                                 id={todoList.id}
-                                todoLists={todoLists}
-                                //setTodoLists={setTodoLists}
+                                deleteTodoList={deleteTodoList}
                                 color={todoList.color}
                                 name={todoList.name}
                             />

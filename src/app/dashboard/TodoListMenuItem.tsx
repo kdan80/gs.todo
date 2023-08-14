@@ -10,18 +10,13 @@ interface Props {
     id: number
     color: string
     name: string
-    todoLists: TodoList[]
-    //setTodoLists: Dispatch<SetStateAction<TodoList[]>>
+    deleteTodoList: (id: number) => void
 }
 
-const TodoListMenuItem = ({ id, color, name, todoLists }: Props) => {
+const TodoListMenuItem = ({ id, color, name, deleteTodoList }: Props) => {
     const handleSubmit = (e: any) => {
         e.preventDefault()
-
-        const updatedTodoLists = todoLists.filter(todoList => {
-            return todoList.id !== id
-        })
-        //setTodoLists(updatedTodoLists)
+        deleteTodoList(id)
     }
 
     return (
