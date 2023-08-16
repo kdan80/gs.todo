@@ -2,18 +2,25 @@
 'use client'
 
 import React, { Dispatch, SetStateAction } from 'react'
-import Icon from './Icon'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import ColorButton from './ColorButton'
 
 interface Props {
     id: number
     color: string
     name: string
     deleteTodoList: (id: number) => void
+    changeColor: (id: number) => void
 }
 
-const TodoListMenuItem = ({ id, color, name, deleteTodoList }: Props) => {
+const TodoListMenuItem = ({
+    id,
+    color,
+    name,
+    deleteTodoList,
+    changeColor,
+}: Props) => {
     const handleSubmit = (e: any) => {
         e.preventDefault()
         deleteTodoList(id)
@@ -23,14 +30,11 @@ const TodoListMenuItem = ({ id, color, name, deleteTodoList }: Props) => {
         <li
             key={id}
             className={`flex flex-row items-center justify-between md:text-lg`}>
-            <div
-                className={`flex flex-row items-center cursor-pointer grow overflow-hidden whitespace-nowrap text-ellipsis`}>
-                <Icon color={color} />
-                <span
-                    className={`px-4 overflow-hidden whitespace-nowrap text-ellipsis`}>
-                    {name}
-                </span>
-            </div>
+            <ColorButton
+                onClick={() => changeColor(id)}
+                color={color}>
+                {name}
+            </ColorButton>
             <form onSubmit={handleSubmit}>
                 <button
                     type='submit'

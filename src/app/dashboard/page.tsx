@@ -23,7 +23,6 @@ const Page = async () => {
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
                 serverTodoLists={serverTodoLists}
-                //setTodoLists={setTodoLists}
                 className={'w-full md:w-80'}
             />
             {/* <List

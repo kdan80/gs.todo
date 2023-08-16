@@ -34,13 +34,28 @@ const Collections = ({ serverTodoLists, className }: Props) => {
         ).id
 
         const newList = {
-            'name': name,
-            'id': currentHighestId + 1,
-            'color': 'blue',
-            'todos': [],
+            name: name,
+            id: currentHighestId + 1,
+            color: 'blue',
+            todos: [],
         }
 
         setTodoLists([...todoLists, newList])
+    }
+
+    const changeColor = (id: number) => {
+        const index = todoLists.findIndex(todoList => todoList.id === id)
+        if (!index) return
+
+        console.log('change color', id)
+
+        const newTodoLists = todoLists
+        newTodoLists[index] = {
+            ...newTodoLists[index],
+            color: 'blue',
+        }
+
+        setTodoLists([...newTodoLists])
     }
 
     return (
@@ -57,6 +72,7 @@ const Collections = ({ serverTodoLists, className }: Props) => {
                                 key={todoList.id}
                                 id={todoList.id}
                                 deleteTodoList={deleteTodoList}
+                                changeColor={changeColor}
                                 color={todoList.color}
                                 name={todoList.name}
                             />
@@ -65,6 +81,7 @@ const Collections = ({ serverTodoLists, className }: Props) => {
                                 key={todoList.id}
                                 id={todoList.id}
                                 deleteTodoList={deleteTodoList}
+                                changeColor={changeColor}
                                 color={todoList.color}
                                 name={todoList.name}
                             />
