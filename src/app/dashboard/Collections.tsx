@@ -22,6 +22,24 @@ const Collections = ({ serverTodoLists, className }: Props) => {
         setTodoLists(updatedTodoLists)
     }
 
+    const addTodoList = (name: string) => {
+        if (todoLists.length >= 10) return
+
+        // Find the highest numbered id in the todoLists array
+        const currentHighestId = todoLists.reduce((prev, current) =>
+            prev.id > current.id ? prev : current
+        ).id
+
+        const newList = {
+            'name': name,
+            'id': currentHighestId + 1,
+            'color': 'blue',
+            'todos': [],
+        }
+
+        setTodoLists([...todoLists, newList])
+    }
+
     return (
         <div
             className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
@@ -52,7 +70,7 @@ const Collections = ({ serverTodoLists, className }: Props) => {
                 </ul>
             </div>
             <div className='py-8 md:py-12 md:text-xl text-xl md:text-base text-gray-300 flex justify-center items-center'>
-                <NewListButton />
+                <NewListButton addTodoList={addTodoList} />
             </div>
         </div>
     )

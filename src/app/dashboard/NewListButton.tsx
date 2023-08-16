@@ -6,11 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
-    todoLists: TodoList[]
-    setTodoLists: Dispatch<SetStateAction<TodoList[]>>
+    addTodoList: (name: string) => void
 }
 
-const NewListButton = ({ todoLists, setTodoLists }: Props) => {
+const NewListButton = ({ addTodoList }: Props) => {
     const [name, setName] = React.useState<string>('')
 
     const handleInputChange = (e: any) => {
@@ -20,9 +19,8 @@ const NewListButton = ({ todoLists, setTodoLists }: Props) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        const data = { name }
 
-        //setTodoLists([...todoLists])
+        addTodoList(name)
         setName('')
     }
 
