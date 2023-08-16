@@ -21,6 +21,8 @@ export default {
                 'yellow': '#fbd85d',
                 'blue': '#6da9e4',
                 'green': '#98d8aa',
+                'brown': '#774422',
+                'orange': '#ff4422',
             },
         },
     },

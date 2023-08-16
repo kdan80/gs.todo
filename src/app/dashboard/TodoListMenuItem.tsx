@@ -11,6 +11,7 @@ interface Props {
     color: string
     name: string
     deleteTodoList: (id: number) => void
+    openColorModal: (id: number) => void
     changeColor: (id: number) => void
 }
 
@@ -19,7 +20,7 @@ const TodoListMenuItem = ({
     color,
     name,
     deleteTodoList,
-    changeColor,
+    openColorModal,
 }: Props) => {
     const handleSubmit = (e: any) => {
         e.preventDefault()
@@ -31,7 +32,7 @@ const TodoListMenuItem = ({
             key={id}
             className={`flex flex-row items-center justify-between md:text-lg`}>
             <ColorButton
-                onClick={() => changeColor(id)}
+                onClick={() => openColorModal(id)}
                 color={color}>
                 {name}
             </ColorButton>

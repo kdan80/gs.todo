@@ -8,6 +8,8 @@ export interface IColorVariants {
     yellow: 'bg-yellow'
     blue: 'bg-blue'
     green: 'bg-green'
+    orange: 'bg-orange'
+    brown: 'bg-brown'
 }
 
 // Tailwind tree-shaking removes unused classes and as such dynamic classes are not recommended.
@@ -21,6 +23,8 @@ const colorVariants: IColorVariants = {
     yellow: 'bg-yellow',
     blue: 'bg-blue',
     green: 'bg-green',
+    orange: 'bg-orange',
+    brown: 'bg-brown',
 } as const
 
 export default colorVariants

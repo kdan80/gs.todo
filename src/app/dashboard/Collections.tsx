@@ -4,6 +4,7 @@
 import React from 'react'
 import TodoListMenuItem from './TodoListMenuItem'
 import NewListButton from './NewListButton'
+import ChangeColorModal from './ChangeColorModal'
 
 interface Props {
     serverTodoLists: TodoList[]
@@ -13,6 +14,9 @@ interface Props {
 const Collections = ({ serverTodoLists, className }: Props) => {
     const [todoLists, setTodoLists] =
         React.useState<TodoList[]>(serverTodoLists)
+
+    const [showModal, setShowModal] = React.useState<boolean>(false)
+    const [colorChangeId, setColorChangeId] = React.useState<number>(0)
 
     const deleteTodoList = (id: number) => {
         const updatedTodoLists = todoLists.filter(todoList => {
@@ -43,16 +47,26 @@ const Collections = ({ serverTodoLists, className }: Props) => {
         setTodoLists([...todoLists, newList])
     }
 
-    const changeColor = (id: number) => {
-        const index = todoLists.findIndex(todoList => todoList.id === id)
-        if (!index) return
+    const openColorModal = (id: number) => {
+        setColorChangeId(id)
+        setShowModal(true)
+    }
 
-        console.log('change color', id)
+    const closeColorModal = () => {
+        setColorChangeId(0)
+        setShowModal(false)
+    }
+
+    const changeColor = (color: string) => {
+        if (!colorChangeId) return
+        const index = todoLists.findIndex(
+            todoList => todoList.id === colorChangeId
+        )
 
         const newTodoLists = todoLists
         newTodoLists[index] = {
             ...newTodoLists[index],
-            color: 'blue',
+            color: color,
         }
 
         setTodoLists([...newTodoLists])
@@ -72,6 +86,7 @@ const Collections = ({ serverTodoLists, className }: Props) => {
                                 key={todoList.id}
                                 id={todoList.id}
                                 deleteTodoList={deleteTodoList}
+                                openColorModal={openColorModal}
                                 changeColor={changeColor}
                                 color={todoList.color}
                                 name={todoList.name}
@@ -81,6 +96,7 @@ const Collections = ({ serverTodoLists, className }: Props) => {
                                 key={todoList.id}
                                 id={todoList.id}
                                 deleteTodoList={deleteTodoList}
+                                openColorModal={openColorModal}
                                 changeColor={changeColor}
                                 color={todoList.color}
                                 name={todoList.name}
@@ -92,6 +108,12 @@ const Collections = ({ serverTodoLists, className }: Props) => {
             <div className='py-8 md:py-12 md:text-xl text-xl md:text-base text-gray-300 flex justify-center items-center'>
                 <NewListButton addTodoList={addTodoList} />
             </div>
+
+            <ChangeColorModal
+                showModal={showModal}
+                changeColor={changeColor}
+                closeColorModal={closeColorModal}
+            />
         </div>
     )
 }
