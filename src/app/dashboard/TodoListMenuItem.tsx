@@ -12,7 +12,7 @@ interface Props {
     name: string
     deleteTodoList: (id: number) => void
     openColorModal: (id: number) => void
-    changeColor: (id: number) => void
+    changeColor: (color: string) => void
 }
 
 const TodoListMenuItem = ({

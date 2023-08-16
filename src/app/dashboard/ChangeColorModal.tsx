@@ -6,7 +6,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
     showModal: boolean
-    changeColor: () => void
+    changeColor: (color: string) => void
     closeColorModal: () => void
 }
 import colorVariants, { IColorVariants } from './colorVariants'
@@ -28,10 +28,25 @@ const ChangeColorModal = ({
     changeColor,
     closeColorModal,
 }: Props) => {
+    const ref = React.useRef(null)
+
+    React.useEffect(() => {
+        if (!showModal) return () => ref.current!.close()
+
+        ref.current!.showModal()
+
+        return () => ref.current!.close()
+    }, [showModal])
+
+    const handleClick = (color: string) => {
+        changeColor(color)
+        closeColorModal()
+    }
+
     return (
         <dialog
-            open={showModal}
-            className='bg-darkBlue'>
+            ref={ref}
+            className='backdrop:bg-[#000000cc] backdrop:backdrop-blur-sm bg-[#20212C] rounded-xl overflow-hidden'>
             <div className='flex flex-row-reverse'>
                 <button
                     onClick={closeColorModal}
@@ -52,8 +67,9 @@ const ChangeColorModal = ({
                         <li
                             key={index}
                             className='flex items-center justify-center'>
-                            <div
-                                onClick={() => changeColor(color)}
+                            <button
+                                type='button'
+                                onClick={() => handleClick(color)}
                                 className={`w-14 h-14 rounded-full ${
                                     colorVariants[color as keyof IColorVariants]
                                 }`}
