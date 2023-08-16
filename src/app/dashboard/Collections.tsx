@@ -26,8 +26,11 @@ const Collections = ({ serverTodoLists, className }: Props) => {
         if (todoLists.length >= 10) return
 
         // Find the highest numbered id in the todoLists array
-        const currentHighestId = todoLists.reduce((prev, current) =>
-            prev.id > current.id ? prev : current
+        const currentHighestId = todoLists.reduce(
+            (prev, current) => {
+                return prev.id > current.id ? prev : current
+            },
+            { id: 0 }
         ).id
 
         const newList = {
