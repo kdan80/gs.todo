@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import React from 'react'
 import './app.css'
-import Collections from './dashboard/Collections'
 
 const Page = () => {
     return (

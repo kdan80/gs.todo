@@ -35,7 +35,7 @@ const ChangeColorModal = ({
             ref.current.showModal()
         }
 
-        return () => ref.current!.close()
+        return () => ref.current?.close()
     }, [showModal])
 
     const handleClick = (color: string) => {

@@ -7,13 +7,14 @@ import NewListButton from './NewListButton'
 import ChangeColorModal from './ChangeColorModal'
 
 interface Props {
-    serverTodoLists: TodoList[]
+    todoLists: TodoList[]
+    setTodoLists: any
     className: string
 }
 
-const Collections = ({ serverTodoLists, className }: Props) => {
-    const [todoLists, setTodoLists] =
-        React.useState<TodoList[]>(serverTodoLists)
+const Collections = ({ todoLists, setTodoLists, className }: Props) => {
+    // const [todoLists, setTodoLists] =
+    //     React.useState<TodoList[]>(serverTodoLists)
 
     const [showModal, setShowModal] = React.useState<boolean>(false)
     const [colorChangeId, setColorChangeId] = React.useState<number>(0)
