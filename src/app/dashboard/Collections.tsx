@@ -74,7 +74,7 @@ const Collections = ({ serverTodoLists, className }: Props) => {
 
     return (
         <div
-            className={`${className} h-screen px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
+            className={`${className} h-full px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
             <div className='py-10 md:text-xl flex justify-between items-center'>
                 <div className='font-bold'>Collections</div>
             </div>

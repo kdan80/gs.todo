@@ -4,18 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: border-box;
+}
+
 html,
-body,
-#app {
-    height: 100%;
+body {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
+
+    max-height: 100%;
 }
 
 body {
     overflow: hidden;
 }
 
-input:focus {
+input:focus,
+button {
     outline: none;
 }
 
