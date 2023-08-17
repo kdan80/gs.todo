@@ -3,11 +3,23 @@
 import React from 'react'
 
 interface Props {
-    listInView: TodoList
+    currentList: TodoList
 }
 
-const List = ({ listInView }: Props) => {
-    return <div>List</div>
+const List = ({ currentList }: Props) => {
+    return (
+        <div>
+            {currentList.todos.length ? (
+                <ul>
+                    {currentList.todos.map((todo, index) => (
+                        <li key={index}>{todo.description}</li>
+                    ))}
+                </ul>
+            ) : (
+                <div>Add a todo...</div>
+            )}
+        </div>
+    )
 }
 
 export default List

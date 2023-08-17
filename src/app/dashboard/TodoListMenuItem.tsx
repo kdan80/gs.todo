@@ -12,6 +12,7 @@ interface Props {
     name: string
     deleteTodoList: (id: number) => void
     openColorModal: (id: number) => void
+    setCurrentTodoList: (id: number) => void
     changeColor: (color: string) => void
 }
 
@@ -20,6 +21,7 @@ const TodoListMenuItem = ({
     color,
     name,
     deleteTodoList,
+    setCurrentTodoList,
     openColorModal,
 }: Props) => {
     const handleSubmit = (e: any) => {
@@ -30,12 +32,15 @@ const TodoListMenuItem = ({
     return (
         <li
             key={id}
-            className={`flex flex-row items-center justify-between md:text-lg`}>
+            className={`flex flex-row items-center justify-between md:text-lg gap-4`}>
             <ColorButton
                 onClick={() => openColorModal(id)}
-                color={color}>
+                color={color}></ColorButton>
+            <span
+                onClick={() => setCurrentTodoList(id)}
+                className={`grow cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis`}>
                 {name}
-            </ColorButton>
+            </span>
             <form onSubmit={handleSubmit}>
                 <button
                     type='submit'

@@ -6,24 +6,15 @@ type Link = {
     active: boolean
 }
 
+type Todo = {
+    description: string
+    completed: boolean
+    id: number
+}
+
 type TodoList = {
     id: number
     name: string
     color: string
-}
-
-type Pagination = {
-    current_page: number
-    data: TodoList[]
-    first_page_url: string | null
-    from: number
-    last_page: number
-    last_page_url: string | null
-    links: Link[]
-    next_page_url: string | null
-    path: string
-    per_page: number
-    prev_page_url: string | null
-    to: number
-    total: number
+    todos: Todo[]
 }

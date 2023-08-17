@@ -9,10 +9,16 @@ import ChangeColorModal from './ChangeColorModal'
 interface Props {
     todoLists: TodoList[]
     setTodoLists: any
+    setCurrentTodoList: (id: number) => void
     className: string
 }
 
-const Collections = ({ todoLists, setTodoLists, className }: Props) => {
+const Collections = ({
+    todoLists,
+    setTodoLists,
+    setCurrentTodoList,
+    className,
+}: Props) => {
     // const [todoLists, setTodoLists] =
     //     React.useState<TodoList[]>(serverTodoLists)
 
@@ -88,6 +94,7 @@ const Collections = ({ todoLists, setTodoLists, className }: Props) => {
                                 id={todoList.id}
                                 deleteTodoList={deleteTodoList}
                                 openColorModal={openColorModal}
+                                setCurrentTodoList={setCurrentTodoList}
                                 changeColor={changeColor}
                                 color={todoList.color}
                                 name={todoList.name}
@@ -98,6 +105,7 @@ const Collections = ({ todoLists, setTodoLists, className }: Props) => {
                                 id={todoList.id}
                                 deleteTodoList={deleteTodoList}
                                 openColorModal={openColorModal}
+                                setCurrentTodoList={setCurrentTodoList}
                                 changeColor={changeColor}
                                 color={todoList.color}
                                 name={todoList.name}
