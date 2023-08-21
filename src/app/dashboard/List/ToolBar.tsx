@@ -5,12 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
+    listName: string
     setCurrentTodoList: setCurrentTodoList
 }
 
-const ToolBar = ({ setCurrentTodoList }: Props) => {
+const ToolBar = ({ listName, setCurrentTodoList }: Props) => {
     return (
-        <div className='border-b border-grey'>
+        <div className='px-3 py-6 flex items-centers gap-3 text-xl'>
             <button
                 type='button'
                 onClick={() => setCurrentTodoList(null)}>
@@ -19,7 +20,7 @@ const ToolBar = ({ setCurrentTodoList }: Props) => {
                     className='h-[24px] w-[24px]'
                 />
             </button>
-            <span></span>
+            <span className='font-bold'>{listName}</span>
         </div>
     )
 }
