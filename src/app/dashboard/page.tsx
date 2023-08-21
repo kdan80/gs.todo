@@ -4,8 +4,9 @@
 
 import React from 'react'
 import Collections from './Collections'
-import ListView from './ListView'
-import List from './List'
+import ListView from './List/ListView'
+import List from './List/List'
+import ToolBar from './List/ToolBar'
 import '../app.css'
 
 const lists = [
@@ -248,7 +249,7 @@ const Page = () => {
     const [todoLists, setTodoLists] = React.useState<TodoList[]>(lists)
     const [currentList, setCurrentList] = React.useState<TodoList | null>(null)
 
-    const setCurrentTodoList = (id: number) => {
+    const setCurrentTodoList = (id: number | null) => {
         const todoList = todoLists.find(todoList => todoList.id === id)
 
         if (!todoList) return setCurrentList(null)
@@ -264,11 +265,14 @@ const Page = () => {
                 className={'w-full md:w-80'}
             />
             <ListView
-                className={
-                    'w-full h-full absolute left-full md:static border-2 border-red text-white'
-                }>
+                className={`w-full h-full absolute ${
+                    currentList ? 'left-0' : 'left-full'
+                } md:static bg-darkBlue border-2 border-red text-white`}>
                 {currentList ? (
-                    <List currentList={currentList} />
+                    <List
+                        currentList={currentList}
+                        setCurrentTodoList={setCurrentTodoList}
+                    />
                 ) : (
                     <div>nothing</div>
                 )}

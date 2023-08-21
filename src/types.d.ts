@@ -18,3 +18,5 @@ type TodoList = {
     color: string
     todos: Todo[]
 }
+
+type setCurrentTodoList = (id: number | null) => void

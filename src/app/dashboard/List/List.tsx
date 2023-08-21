@@ -1,14 +1,17 @@
 /** @format */
 
 import React from 'react'
+import ToolBar from './ToolBar'
 
 interface Props {
     currentList: TodoList
+    setCurrentTodoList: setCurrentTodoList
 }
 
-const List = ({ currentList }: Props) => {
+const List = ({ currentList, setCurrentTodoList }: Props) => {
     return (
         <div>
+            <ToolBar setCurrentTodoList={setCurrentTodoList} />
             {currentList.todos.length ? (
                 <ul>
                     {currentList.todos.map((todo, index) => (
