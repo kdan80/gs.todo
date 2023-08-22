@@ -11,16 +11,20 @@ interface Props {
 
 const List = ({ currentList, setCurrentTodoList }: Props) => {
     return (
-        <div className='flex flex-col h-full w-full'>
+        <div className='flex flex-col h-full min-w-[300px]'>
             <ToolBar
                 setCurrentTodoList={setCurrentTodoList}
                 listName={currentList.name}
             />
-            <div className='h-full grow px-3 flex flex-col md:items-center md:justify-center'>
+            <div className='h-full px-3 flex flex-col md:items-center md:justify-center'>
                 {currentList.todos.length ? (
-                    <ul className='flex flex-col gap-2'>
+                    <ul className='flex flex-col gap-3'>
                         {currentList.todos.map((todo, index) => (
-                            <ListItem key={index}>{todo.description}</ListItem>
+                            <ListItem
+                                key={index}
+                                id={index.toString()}>
+                                {todo.description}
+                            </ListItem>
                         ))}
                     </ul>
                 ) : (
