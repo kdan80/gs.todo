@@ -265,9 +265,9 @@ const Page = () => {
                 className={'w-full md:w-80'}
             />
             <ListView
-                className={`w-full h-full absolute ${
+                className={`w-full h-full absolute md:px-4 border ${
                     currentList ? 'left-0' : 'left-full'
-                } md:static bg-darkBlue text-white`}>
+                } md:static flex items-center justify-center justify-center bg-darkBlue text-white`}>
                 {currentList ? (
                     <List
                         currentList={currentList}
