@@ -31,6 +31,7 @@ const Collections = ({
         })
 
         setTodoLists(updatedTodoLists)
+        setCurrentTodoList(0)
     }
 
     const addTodoList = (name: string) => {

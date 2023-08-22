@@ -20,3 +20,5 @@ type TodoList = {
 }
 
 type setCurrentTodoList = (id: number | null) => void
+
+type toggleComplete = (listId: number, todoId: number) => void

@@ -23,7 +23,7 @@ const lists = [
             {
                 id: 2,
                 description: 'bread',
-                completed: false,
+                completed: true,
             },
             {
                 id: 3,
@@ -33,7 +33,7 @@ const lists = [
             {
                 id: 4,
                 description: 'cheese',
-                completed: false,
+                completed: true,
             },
             {
                 id: 5,
@@ -43,7 +43,7 @@ const lists = [
             {
                 id: 6,
                 description: 'dog food',
-                completed: false,
+                completed: true,
             },
             {
                 id: 7,
@@ -122,12 +122,12 @@ const lists = [
             {
                 id: 1,
                 description: 'pagination in prisma',
-                completed: false,
+                completed: true,
             },
             {
                 id: 2,
                 description: 'intersection observer api',
-                completed: false,
+                completed: true,
             },
             {
                 id: 3,
@@ -142,12 +142,12 @@ const lists = [
             {
                 id: 5,
                 description: 'immutable state',
-                completed: false,
+                completed: true,
             },
             {
                 id: 6,
                 description: 'server side rendering',
-                completed: false,
+                completed: true,
             },
         ],
     },
@@ -159,17 +159,17 @@ const lists = [
             {
                 id: 1,
                 description: 'Five-a-side footy',
-                completed: false,
+                completed: true,
             },
             {
                 id: 2,
                 description: 'Do shopping',
-                completed: false,
+                completed: true,
             },
             {
                 id: 3,
                 description: 'Tidy bedroom',
-                completed: false,
+                completed: true,
             },
             {
                 id: 4,
@@ -201,7 +201,7 @@ const lists = [
             {
                 id: 1,
                 description: 'Take out the bins',
-                completed: false,
+                completed: true,
             },
         ],
     },
@@ -213,32 +213,32 @@ const lists = [
             {
                 id: 1,
                 description: 'Walk dogs',
-                completed: false,
+                completed: true,
             },
             {
                 id: 2,
                 description: 'Web dev study 1 hour',
-                completed: false,
+                completed: true,
             },
             {
                 id: 3,
                 description: 'Play guitar',
-                completed: false,
+                completed: true,
             },
             {
                 id: 4,
                 description: 'Gym',
-                completed: false,
+                completed: true,
             },
             {
                 id: 5,
                 description: 'Tidy room',
-                completed: false,
+                completed: true,
             },
             {
                 id: 6,
                 description:
-                    "Web dev study 1 hour because you didn' do it earlier!",
+                    "Web dev study 1 hour because you didn't do it earlier!",
                 completed: false,
             },
         ],
@@ -254,6 +254,16 @@ const Page = () => {
 
         if (!todoList) return setCurrentList(null)
         setCurrentList(todoList)
+    }
+
+    const toggleComplete = (listId: number, todoId: number) => {
+        const index = todoLists.findIndex(todoList => todoList.id === listId)
+
+        const newTodoLists = todoLists
+        newTodoLists[index].todos[todoId - 1].completed =
+            !newTodoLists[index].todos[todoId - 1].completed
+
+        setTodoLists([...newTodoLists])
     }
 
     return (
@@ -272,6 +282,7 @@ const Page = () => {
                     <List
                         currentList={currentList}
                         setCurrentTodoList={setCurrentTodoList}
+                        toggleComplete={toggleComplete}
                     />
                 ) : (
                     <div>nothing</div>

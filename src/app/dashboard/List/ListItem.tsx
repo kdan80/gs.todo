@@ -7,14 +7,18 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 interface Props {
     children?: React.ReactNode
     id: string
+    completed: boolean
+    onClick: any
 }
 
-const ListItem = ({ children, id }: Props) => {
+const ListItem = ({ children, id, completed, onClick }: Props) => {
     return (
         <li className='bg-[#20212C] text-lg rounded-xl p-4 flex flex-row gap-3 items-center'>
             <input
                 id={id}
                 type='checkbox'
+                checked={completed}
+                onChange={onClick}
                 className='appearance-none relative peer w-6 h-6 cursor-pointer shrink-0 border-[3px] border-pink rounded-[9px] bg-transparent checked:bg-pink'
             />
             <FontAwesomeIcon
@@ -23,7 +27,9 @@ const ListItem = ({ children, id }: Props) => {
             />
             <label
                 htmlFor={id}
-                className='cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis grow'>
+                className={`${
+                    completed ? 'text-gray-600 line-through' : 'text-white'
+                } cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis grow`}>
                 {children}
             </label>
         </li>
