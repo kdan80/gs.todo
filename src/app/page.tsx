@@ -317,7 +317,7 @@ const Page = () => {
     }
 
     return (
-        <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
+        <main className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
                 todoLists={todoLists}
                 setTodoLists={setTodoLists}
@@ -354,24 +354,8 @@ const Page = () => {
                     </div>
                 )}
             </ListView>
-        </div>
+        </main>
     )
 }
 
 export default Page
-
-// /** @format */
-
-// import Link from 'next/link'
-// import React from 'react'
-// import './app.css'
-
-// const Page = () => {
-//     return (
-//         <main className=''>
-//             <Link href={'/dashboard'}>Dashboard</Link>
-//         </main>
-//     )
-// }
-
-// export default Page
