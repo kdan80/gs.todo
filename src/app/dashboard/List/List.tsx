@@ -12,7 +12,7 @@ interface Props {
 
 const List = ({ currentList, setCurrentTodoList, toggleComplete }: Props) => {
     return (
-        <div className='flex flex-col h-full min-w-[300px] w-full  md:max-w-[800px] md:max-h-[85%]'>
+        <div className='flex flex-col h-full min-w-[300px] w-full md:max-w-[800px] md:max-h-[85%] overflow-hidden'>
             <ToolBar
                 setCurrentTodoList={setCurrentTodoList}
                 listName={currentList.name}

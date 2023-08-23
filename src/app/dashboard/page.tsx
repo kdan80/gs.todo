@@ -6,7 +6,7 @@ import React from 'react'
 import Collections from './Collections'
 import ListView from './List/ListView'
 import List from './List/List'
-import ToolBar from './List/ToolBar'
+import CreateTodoButton from './List/CreateTodoButton'
 import '../app.css'
 
 const lists = [
@@ -266,6 +266,33 @@ const Page = () => {
         setTodoLists([...newTodoLists])
     }
 
+    const addTodo = (description: string) => {
+        if (!currentList) return
+        if (currentList.todos.length >= 10) return
+        const index = todoLists.findIndex(
+            todoList => todoList.id === currentList.id
+        )
+
+        // Find the highest numbered id in the todos array
+        const currentHighestId = todoLists[index].todos.reduce(
+            (prev, current) => {
+                return prev.id > current.id ? prev : current
+            },
+            { id: 0 }
+        ).id
+
+        const todo = {
+            id: currentHighestId + 1,
+            description: description,
+            completed: false,
+        }
+
+        const newTodoLists = todoLists
+        newTodoLists[index].todos.push(todo)
+
+        setTodoLists([...newTodoLists])
+    }
+
     return (
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
@@ -277,7 +304,7 @@ const Page = () => {
             <ListView
                 className={`w-full h-full absolute md:px-4 ${
                     currentList ? 'left-0' : 'left-full'
-                } md:static flex items-center justify-center justify-center bg-darkBlue text-white`}>
+                } md:static flex flex-col items-center justify-center justify-center bg-darkBlue text-white`}>
                 {currentList ? (
                     <List
                         currentList={currentList}
@@ -287,6 +314,9 @@ const Page = () => {
                 ) : (
                     <div>nothing</div>
                 )}
+                <div className='py-7 px-4 min-w-[300px] w-full md:max-w-[800px]'>
+                    <CreateTodoButton addTodo={addTodo} />
+                </div>
             </ListView>
         </div>
     )
