@@ -34,7 +34,7 @@ const NewListButton = ({ addTodoList }: Props) => {
                     className={`h-14 md:h-12 bg-gray-600 w-14 md:w-12 flex justify-center items-center rounded-full`}>
                     <FontAwesomeIcon
                         icon={faPlus}
-                        className=''
+                        className='h-6 w-6'
                     />
                 </button>
                 <input

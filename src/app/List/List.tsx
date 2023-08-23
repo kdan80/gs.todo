@@ -38,7 +38,9 @@ const List = ({
                         ))}
                     </ul>
                 ) : (
-                    <div>Add a todo...</div>
+                    <div className=' w-full h-full flex justify-center items-center'>
+                        <div className=' text-gray-400'>Add a todo...</div>
+                    </div>
                 )}
             </div>
         </div>
