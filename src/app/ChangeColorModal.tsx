@@ -31,11 +31,15 @@ const ChangeColorModal = ({
     const ref = React.useRef<HTMLDialogElement>(null)
 
     React.useEffect(() => {
-        if (ref.current && showModal) {
-            ref.current.showModal()
+        const dialog = ref.current
+
+        if (dialog && showModal) {
+            dialog.showModal()
         }
 
-        return () => ref.current?.close()
+        return () => {
+            if (dialog) dialog.close()
+        }
     }, [showModal])
 
     const handleClick = (color: string) => {

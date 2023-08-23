@@ -347,8 +347,8 @@ const Page = () => {
                             gs.todo
                         </div>
                         <div className='text-gray-500'>
-                            If you've got sh!t to do, you've got{' '}
-                            <span className='text-pink'>gs.todo</span>
+                            If you&#39;ve got sh!t to do, you&#39;ve got
+                            <span className='text-pink'> gs.todo</span>
                         </div>
                         <div className='text-gray-500'></div>
                     </div>
