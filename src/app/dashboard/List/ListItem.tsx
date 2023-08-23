@@ -13,7 +13,7 @@ interface Props {
 
 const ListItem = ({ children, id, completed, onClick }: Props) => {
     return (
-        <li className='bg-[#20212C] text-lg rounded-xl p-4 flex flex-row gap-3 items-center'>
+        <li className='bg-[#20212C] text-lg rounded-xl px-4 py-3 flex flex-row gap-3 items-center'>
             <input
                 id={id}
                 type='checkbox'

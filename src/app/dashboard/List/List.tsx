@@ -17,9 +17,9 @@ const List = ({ currentList, setCurrentTodoList, toggleComplete }: Props) => {
                 setCurrentTodoList={setCurrentTodoList}
                 listName={currentList.name}
             />
-            <div className='h-full px-3 flex flex-col md:items-center'>
+            <div className='h-full px-3 flex flex-col md:items-center overflow-auto no-scrollbar'>
                 {currentList.todos.length ? (
-                    <ul className='flex flex-col gap-3 md:min-w-[600px] md:w-full'>
+                    <ul className='flex flex-col gap-3 md:min-w-[600px] md:w-full mb-6'>
                         {currentList.todos.map((todo, index) => (
                             <ListItem
                                 key={index}
