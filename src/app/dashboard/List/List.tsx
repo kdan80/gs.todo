@@ -18,7 +18,7 @@ const List = ({
     deleteTodo,
 }: Props) => {
     return (
-        <div className='flex flex-col h-full min-w-[300px] w-full md:max-w-[800px] md:max-h-[85%] overflow-hidden'>
+        <div className='flex flex-col h-full min-w-[300px] w-full md:max-w-[600px] md:max-h-[85%] overflow-hidden'>
             <ToolBar
                 setCurrentTodoList={setCurrentTodoList}
                 listName={currentList.name}

@@ -322,7 +322,8 @@ const Page = () => {
                 todoLists={todoLists}
                 setTodoLists={setTodoLists}
                 setCurrentTodoList={setCurrentTodoList}
-                className={'w-full md:w-80'}
+                currentList={currentList}
+                className={'w-full md:w-1/4'}
             />
             <ListView
                 className={`w-full h-full absolute md:px-4 ${
@@ -336,7 +337,7 @@ const Page = () => {
                             toggleComplete={toggleComplete}
                             deleteTodo={deleteTodo}
                         />
-                        <div className='py-7 px-4 min-w-[300px] w-full md:max-w-[800px]'>
+                        <div className='py-7 px-4 min-w-[300px] w-full md:max-w-[600px]'>
                             <CreateTodoButton addTodo={addTodo} />
                         </div>
                     </React.Fragment>

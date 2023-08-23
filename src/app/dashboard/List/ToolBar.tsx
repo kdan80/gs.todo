@@ -11,7 +11,7 @@ interface Props {
 
 const ToolBar = ({ listName, setCurrentTodoList }: Props) => {
     return (
-        <div className='px-3 py-6 flex items-center gap-3 text-xl'>
+        <div className='px-3 md:px-0 py-6 flex items-center gap-3 text-xl'>
             <button
                 type='button'
                 className='flex items-center justify-center md:bg-[#20212C] md:p-4 md:rounded-xl'

@@ -11,17 +11,16 @@ interface Props {
     setTodoLists: any
     setCurrentTodoList: (id: number) => void
     className: string
+    currentList: TodoList | null
 }
 
 const Collections = ({
     todoLists,
     setTodoLists,
     setCurrentTodoList,
+    currentList,
     className,
 }: Props) => {
-    // const [todoLists, setTodoLists] =
-    //     React.useState<TodoList[]>(serverTodoLists)
-
     const [showModal, setShowModal] = React.useState<boolean>(false)
     const [colorChangeId, setColorChangeId] = React.useState<number>(0)
 
@@ -31,7 +30,9 @@ const Collections = ({
         })
 
         setTodoLists(updatedTodoLists)
-        setCurrentTodoList(0)
+        if (currentList && currentList.id === id) {
+            setCurrentTodoList(0)
+        }
     }
 
     const addTodoList = (name: string) => {
@@ -82,7 +83,7 @@ const Collections = ({
 
     return (
         <div
-            className={`${className} h-full px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
+            className={`${className} h-full px-3 md:px-6 text-white text-2xl bg-[#20212C] flex flex-col flex-justify`}>
             <div className='py-10 md:text-xl flex justify-between items-center'>
                 <div className='font-bold'>Collections</div>
             </div>

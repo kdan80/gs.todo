@@ -12,7 +12,7 @@ const ColorButton = ({ color, onClick }: Props) => {
     return (
         <button
             onClick={onClick}
-            className={`flex flex-row items-center overflow-hidden whitespace-nowrap text-ellipsis`}>
+            className={`flex flex-row shrink-0 items-center overflow-hidden whitespace-nowrap text-ellipsis`}>
             <Icon color={color} />
         </button>
     )

@@ -40,7 +40,7 @@ const NewListButton = ({ addTodoList }: Props) => {
                 <input
                     value={name}
                     onChange={handleInputChange}
-                    className={`bg-transparent grow mr-6 md:mr-4`}
+                    className={`bg-transparent grow mr-6 md:mr-4 text-base`}
                     type='text'
                     placeholder='Create a New List...'
                 />

@@ -32,7 +32,7 @@ const TodoListMenuItem = ({
     return (
         <li
             key={id}
-            className={`flex flex-row items-center justify-between md:text-lg gap-4`}>
+            className={`flex flex-row items-center justify-between text-lg gap-4`}>
             <ColorButton
                 onClick={() => openColorModal(id)}
                 color={color}></ColorButton>
