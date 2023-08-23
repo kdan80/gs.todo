@@ -24,10 +24,7 @@ const List = ({ currentList, setCurrentTodoList, toggleComplete }: Props) => {
                             <ListItem
                                 key={index}
                                 completed={todo.completed}
-                                onClick={() =>
-                                    toggleComplete(currentList.id, todo.id)
-                                }
-                                id={index.toString()}>
+                                onClick={() => toggleComplete(todo.id)}>
                                 {todo.description}
                             </ListItem>
                         ))}

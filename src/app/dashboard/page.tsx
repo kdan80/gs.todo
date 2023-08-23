@@ -256,8 +256,11 @@ const Page = () => {
         setCurrentList(todoList)
     }
 
-    const toggleComplete = (listId: number, todoId: number) => {
-        const index = todoLists.findIndex(todoList => todoList.id === listId)
+    const toggleComplete = (todoId: number) => {
+        if (!currentList) return
+        const index = todoLists.findIndex(
+            todoList => todoList.id === currentList.id
+        )
 
         const newTodoLists = todoLists
         newTodoLists[index].todos[todoId - 1].completed =
