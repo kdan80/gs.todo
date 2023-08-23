@@ -1,7 +1,7 @@
 /** @format */
 'use client'
 
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -42,7 +42,7 @@ const NewListButton = ({ addTodoList }: Props) => {
                     onChange={handleInputChange}
                     className={`bg-transparent grow mr-6 md:mr-4`}
                     type='text'
-                    placeholder='Create a New List'
+                    placeholder='Create a New List...'
                 />
             </form>
         </div>

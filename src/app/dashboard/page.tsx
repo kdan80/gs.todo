@@ -258,13 +258,17 @@ const Page = () => {
 
     const toggleComplete = (todoId: number) => {
         if (!currentList) return
-        const index = todoLists.findIndex(
+        const listIndex = todoLists.findIndex(
             todoList => todoList.id === currentList.id
         )
-
         const newTodoLists = todoLists
-        newTodoLists[index].todos[todoId - 1].completed =
-            !newTodoLists[index].todos[todoId - 1].completed
+
+        const todoIndex = newTodoLists[listIndex].todos.findIndex(
+            todo => todo.id === todoId
+        )
+
+        newTodoLists[listIndex].todos[todoIndex].completed =
+            !newTodoLists[listIndex].todos[todoIndex].completed
 
         setTodoLists([...newTodoLists])
     }
@@ -296,6 +300,22 @@ const Page = () => {
         setTodoLists([...newTodoLists])
     }
 
+    const deleteTodo = (todoId: number) => {
+        if (!currentList) return
+        const listIndex = todoLists.findIndex(
+            todoList => todoList.id === currentList.id
+        )
+        const newTodoLists = todoLists
+
+        const todoIndex = newTodoLists[listIndex].todos.findIndex(
+            todo => todo.id === todoId
+        )
+
+        newTodoLists[listIndex].todos.splice(todoIndex, 1)
+
+        setTodoLists([...newTodoLists])
+    }
+
     return (
         <div className='h-full relative bg-darkBlue flex flex-row overflow-hidden overscroll-none'>
             <Collections
@@ -309,17 +329,29 @@ const Page = () => {
                     currentList ? 'left-0' : 'left-full'
                 } md:static flex flex-col items-center justify-center justify-center bg-darkBlue text-white`}>
                 {currentList ? (
-                    <List
-                        currentList={currentList}
-                        setCurrentTodoList={setCurrentTodoList}
-                        toggleComplete={toggleComplete}
-                    />
+                    <React.Fragment>
+                        <List
+                            currentList={currentList}
+                            setCurrentTodoList={setCurrentTodoList}
+                            toggleComplete={toggleComplete}
+                            deleteTodo={deleteTodo}
+                        />
+                        <div className='py-7 px-4 min-w-[300px] w-full md:max-w-[800px]'>
+                            <CreateTodoButton addTodo={addTodo} />
+                        </div>
+                    </React.Fragment>
                 ) : (
-                    <div>nothing</div>
+                    <div className='mb-12'>
+                        <div className='text-4xl text-gray-300 mb-4 flex flex-col items-center'>
+                            gs.todo
+                        </div>
+                        <div className='text-gray-500'>
+                            If you've got sh!t to do, you've got{' '}
+                            <span className='text-pink'>gs.todo</span>
+                        </div>
+                        <div className='text-gray-500'></div>
+                    </div>
                 )}
-                <div className='py-7 px-4 min-w-[300px] w-full md:max-w-[800px]'>
-                    <CreateTodoButton addTodo={addTodo} />
-                </div>
             </ListView>
         </div>
     )

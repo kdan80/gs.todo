@@ -24,3 +24,5 @@ type setCurrentTodoList = (id: number | null) => void
 type toggleComplete = (todoId: number) => void
 
 type addTodo = (description: string) => void
+
+type deleteTodo = (todoId: number) => void

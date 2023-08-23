@@ -8,9 +8,15 @@ interface Props {
     currentList: TodoList
     setCurrentTodoList: setCurrentTodoList
     toggleComplete: toggleComplete
+    deleteTodo: deleteTodo
 }
 
-const List = ({ currentList, setCurrentTodoList, toggleComplete }: Props) => {
+const List = ({
+    currentList,
+    setCurrentTodoList,
+    toggleComplete,
+    deleteTodo,
+}: Props) => {
     return (
         <div className='flex flex-col h-full min-w-[300px] w-full md:max-w-[800px] md:max-h-[85%] overflow-hidden'>
             <ToolBar
@@ -23,7 +29,9 @@ const List = ({ currentList, setCurrentTodoList, toggleComplete }: Props) => {
                         {currentList.todos.map((todo, index) => (
                             <ListItem
                                 key={index}
+                                todo={todo}
                                 completed={todo.completed}
+                                deleteTodo={deleteTodo}
                                 onClick={() => toggleComplete(todo.id)}>
                                 {todo.description}
                             </ListItem>
