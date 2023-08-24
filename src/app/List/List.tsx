@@ -30,11 +30,9 @@ const List = ({
                             <ListItem
                                 key={index}
                                 todo={todo}
-                                completed={todo.completed}
                                 deleteTodo={deleteTodo}
-                                onClick={() => toggleComplete(todo.id)}>
-                                {todo.description}
-                            </ListItem>
+                                toggleComplete={toggleComplete}
+                            />
                         ))}
                     </ul>
                 ) : (

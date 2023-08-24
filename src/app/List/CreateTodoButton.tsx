@@ -9,14 +9,14 @@ interface Props {
 }
 
 const CreateTodoButton = ({ addTodo }: Props) => {
-    const [description, setDescription] = React.useState<string>('')
+    const [description, setDescription] = React.useState('')
     const ref = React.useRef<HTMLInputElement | null>(null)
 
-    const handleInputChange = (e: any) => {
-        setDescription(e.target.value)
+    const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setDescription(e.currentTarget.value)
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!description) return
         addTodo(description)

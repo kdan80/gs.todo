@@ -1,15 +1,15 @@
 /** @format */
 'use client'
 
-import React from 'react'
+import React, { SetStateAction } from 'react'
 import TodoListMenuItem from './TodoListMenuItem'
 import NewListButton from './NewListButton'
 import ChangeColorModal from './ChangeColorModal'
 
 interface Props {
     todoLists: TodoList[]
-    setTodoLists: any
-    setCurrentTodoList: (id: number) => void
+    setTodoLists: setTodoLists
+    setCurrentTodoList: setCurrentTodoList
     className: string
     currentList: TodoList | null
 }
@@ -21,8 +21,8 @@ const Collections = ({
     currentList,
     className,
 }: Props) => {
-    const [showModal, setShowModal] = React.useState<boolean>(false)
-    const [colorChangeId, setColorChangeId] = React.useState<number>(0)
+    const [showModal, setShowModal] = React.useState(false)
+    const [colorChangeId, setColorChangeId] = React.useState(0)
 
     const deleteTodoList = (id: number) => {
         const updatedTodoLists = todoLists.filter(todoList => {
@@ -93,24 +93,20 @@ const Collections = ({
                         return arr.length - 1 === index ? (
                             <TodoListMenuItem
                                 key={todoList.id}
-                                id={todoList.id}
+                                todoList={todoList}
                                 deleteTodoList={deleteTodoList}
                                 openColorModal={openColorModal}
                                 setCurrentTodoList={setCurrentTodoList}
                                 changeColor={changeColor}
-                                color={todoList.color}
-                                name={todoList.name}
                             />
                         ) : (
                             <TodoListMenuItem
                                 key={todoList.id}
-                                id={todoList.id}
+                                todoList={todoList}
                                 deleteTodoList={deleteTodoList}
                                 openColorModal={openColorModal}
                                 setCurrentTodoList={setCurrentTodoList}
                                 changeColor={changeColor}
-                                color={todoList.color}
-                                name={todoList.name}
                             />
                         )
                     })}

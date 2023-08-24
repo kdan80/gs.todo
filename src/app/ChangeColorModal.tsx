@@ -28,7 +28,7 @@ const ChangeColorModal = ({
     changeColor,
     closeColorModal,
 }: Props) => {
-    const ref = React.useRef<HTMLDialogElement>(null)
+    const ref = React.useRef<HTMLDialogElement | null>(null)
 
     React.useEffect(() => {
         const dialog = ref.current
@@ -38,7 +38,7 @@ const ChangeColorModal = ({
         }
 
         return () => {
-            if (dialog) dialog.close()
+            dialog?.close()
         }
     }, [showModal])
 

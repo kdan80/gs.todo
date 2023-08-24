@@ -6,20 +6,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
-    addTodoList: (name: string) => void
+    addTodoList: addTodoList
 }
 
 const NewListButton = ({ addTodoList }: Props) => {
-    const [name, setName] = React.useState<string>('')
+    const [name, setName] = React.useState('')
 
-    const handleInputChange = (e: any) => {
-        console.log(e.target.value)
-        setName(e.target.value)
+    const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setName(e.currentTarget.value)
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
+        if (!name) return
         addTodoList(name)
         setName('')
     }

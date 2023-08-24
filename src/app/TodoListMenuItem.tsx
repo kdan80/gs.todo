@@ -4,42 +4,40 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import ColorButton from './ColorButton'
+import Icon from './Icon'
 
 interface Props {
-    id: number
-    color: string
-    name: string
-    deleteTodoList: (id: number) => void
-    openColorModal: (id: number) => void
-    setCurrentTodoList: (id: number) => void
-    changeColor: (color: string) => void
+    todoList: TodoList
+    deleteTodoList: deleteTodoList
+    openColorModal: openColorModal
+    setCurrentTodoList: setCurrentTodoList
+    changeColor: changeColor
 }
 
 const TodoListMenuItem = ({
-    id,
-    color,
-    name,
+    todoList,
     deleteTodoList,
     setCurrentTodoList,
     openColorModal,
 }: Props) => {
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        deleteTodoList(id)
+        deleteTodoList(todoList.id)
     }
 
     return (
         <li
-            key={id}
+            key={todoList.id}
             className={`flex flex-row items-center justify-between text-lg gap-4`}>
-            <ColorButton
-                onClick={() => openColorModal(id)}
-                color={color}></ColorButton>
+            <button
+                onClick={() => openColorModal(todoList.id)}
+                className={`flex flex-row shrink-0 items-center overflow-hidden whitespace-nowrap text-ellipsis`}>
+                <Icon color={todoList.color} />
+            </button>
             <span
-                onClick={() => setCurrentTodoList(id)}
+                onClick={() => setCurrentTodoList(todoList.id)}
                 className={`grow cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis`}>
-                {name}
+                {todoList.name}
             </span>
             <form onSubmit={handleSubmit}>
                 <button
